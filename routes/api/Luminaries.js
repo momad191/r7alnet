@@ -58,7 +58,8 @@ router.get('/', auth, async (req, res) => {
 
 
 router.post('/', upload.single('L_Img'), (req, res, next) => {
-    const url = req.protocol + '://' + req.get('host')
+    //const url = req.protocol + '://' + req.get('host')
+    const url = 'https://s-rf-heroku.herokuapp.com'
     const luminaries = new Luminaries({
  
         _id: new mongoose.Types.ObjectId(),
@@ -116,7 +117,8 @@ router.route('/:id').get((req, res) => {
 
   
 router.route('/EditLuminariesImg/:id').post(upload.single('L_Img'),(req, res) => {
-  const url = req.protocol + '://' + req.get('host')
+  //const url = req.protocol + '://' + req.get('host')
+  const url = 'https://s-rf-heroku.herokuapp.com'
   Luminaries.findById(req.params.id)
     .then(luminaries => {
       luminaries.L_name = req.body.L_name;   

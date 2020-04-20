@@ -60,10 +60,11 @@ router.route('/:id').get((req, res) => {
 
 
 //******************************************************************** */
-
+ 
 
 router.route('/EdituserImg/:id').post(upload.single('avatar'),auth,(req, res) => {
-  const url = req.protocol + '://' + req.get('host')
+  //const url = req.protocol + '://' + req.get('host')
+  const url = 'https://s-rf-heroku.herokuapp.com'
   User.findById(req.params.id)
     .then(user => {
       user.name = req.body.name;   

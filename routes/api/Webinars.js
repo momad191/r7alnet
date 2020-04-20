@@ -48,7 +48,8 @@ router.get('/', auth, async (req, res) => {
 
 
 router.post('/', upload.single('WebinarImg'), (req, res, next) => {
-    const url = req.protocol + '://' + req.get('host')
+    //const url = req.protocol + '://' + req.get('host')
+    const url = 'https://s-rf-heroku.herokuapp.com'
     const webinar = new Webinar({
 
         _id: new mongoose.Types.ObjectId(),
@@ -126,7 +127,8 @@ router.route('/:id').get((req, res) => {
 
   
 router.route('/EditwebinarsImg/:id').post(upload.single('WebinarImg'),(req, res) => {
-    const url = req.protocol + '://' + req.get('host')
+    //const url = req.protocol + '://' + req.get('host')
+    const url = 'https://s-rf-heroku.herokuapp.com'
     Webinar.findById(req.params.id)
       .then(webinar => {
         webinar.Surname = req.body.Surname;

@@ -28,12 +28,13 @@ var upload = multer({
         }
     }
 });
-
+ 
 // User model
 let Image = require('../../models/User');
 
 router.post('/', upload.single('profileImg'), (req, res, next) => {
-    const url = req.protocol + '://' + req.get('host')
+    //const url = req.protocol + '://' + req.get('host')
+    const url = 'https://s-rf-heroku.herokuapp.com'
     const image = new Image({
      _id: new mongoose.Types.ObjectId(),
       title: req.body.title,
