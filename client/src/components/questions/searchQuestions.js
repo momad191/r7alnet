@@ -170,7 +170,7 @@ handlePageClick = (e) => {
 
 
   componentDidMount() {
-    axios.get('http://localhost:5000/api/questions/')
+    axios.get('/api/questions/')
       .then(response => {
         this.setState({ exercises: response.data })
 
@@ -181,7 +181,7 @@ handlePageClick = (e) => {
   }
 
   deleteExercise(id) {
-    axios.delete('http://localhost:5000/api/questions/'+id)
+    axios.delete('/api/questions/'+id)
       .then(response => { console.log(response.data)});
 
     this.setState({

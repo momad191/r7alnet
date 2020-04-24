@@ -34,7 +34,7 @@ export default class EditLuminariesImg extends Component {
   }
   
   componentDidMount() {
-    axios.get('http://localhost:5000/api/users/'+this.props.match.params.id)
+    axios.get('/api/users/'+this.props.match.params.id)
       .then(response => {
         this.setState({
           name: response.data.name,
@@ -92,7 +92,7 @@ export default class EditLuminariesImg extends Component {
     // formData.append('L_biography', this.state.L_biography);
 
     //this.props.addWebinars(formData);
-   axios.post('http://localhost:5000/api/users/EdituserImg/' + this.props.match.params.id, formData)
+   axios.post('/api/users/EdituserImg/' + this.props.match.params.id, formData)
    .then(res => console.log(res.data));
     window.location = '/dashboard';
     
