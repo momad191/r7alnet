@@ -28,7 +28,7 @@ export default class Editwebinars extends Component {
   }
  
   componentDidMount() {
-    axios.get('http://localhost:5000/api/contact/'+this.props.match.params.id)
+    axios.get('https://s-rf-heroku.herokuapp.com/api/contact/'+this.props.match.params.id)
       .then(response => {
         this.setState({
 
@@ -48,7 +48,7 @@ export default class Editwebinars extends Component {
         console.log(error);
       })
 
-    axios.get('http://localhost:5000/api/users/')
+    axios.get('https://s-rf-heroku.herokuapp.com:5000/api/users/')
       .then(response => {
         if (response.data.length > 0) {
           this.setState({
@@ -115,7 +115,7 @@ export default class Editwebinars extends Component {
     }
 
 
-    axios.post('http://localhost:5000/api/contact/update/' + this.props.match.params.id, contact)
+    axios.post('https://s-rf-heroku.herokuapp.com:5000/api/contact/update/' + this.props.match.params.id, contact)
     .then(res => console.log(res.data));
 
    window.location = '/AllLContact';

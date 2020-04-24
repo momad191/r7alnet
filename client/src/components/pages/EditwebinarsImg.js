@@ -82,7 +82,7 @@ export default class Editwebinars extends Component {
         console.log(error);
       })
 
-    axios.get('http://localhost:5000/api/users/')
+    axios.get('https://s-rf-heroku.herokuapp.com:5000/api/users/')
       .then(response => {
         if (response.data.length > 0) {
           this.setState({
@@ -231,7 +231,7 @@ export default class Editwebinars extends Component {
     formData.append('WebinarImg', this.state.WebinarImg);
 
     //this.props.addWebinars(formData);
-   axios.post('http://localhost:5000/api/webinars/EditwebinarsImg/' + this.props.match.params.id, formData)
+   axios.post('https://s-rf-heroku.herokuapp.com:5000/api/webinars/EditwebinarsImg/' + this.props.match.params.id, formData)
    .then(res => console.log(res.data));
    window.location = '/AllWebinars';
     

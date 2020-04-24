@@ -107,7 +107,7 @@ handlePageClick = (e) => {
 
 
   componentDidMount() {
-    axios.get('http://localhost:5000/api/Luminaries/')
+    axios.get('https://s-rf-heroku.herokuapp.com:5000/api/Luminaries/')
       .then(response => {
         this.setState({ exercises: response.data })
 
@@ -118,7 +118,7 @@ handlePageClick = (e) => {
   }
 
   deleteExercise(id) {
-    axios.delete('http://localhost:5000/api/Luminaries/'+id)
+    axios.delete('https://s-rf-heroku.herokuapp.com:5000/api/Luminaries/'+id)
       .then(response => { console.log(response.data)});
 
     this.setState({
