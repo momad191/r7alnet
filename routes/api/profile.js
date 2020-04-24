@@ -66,7 +66,7 @@ router.post(
       instagram,
       linkedin
     } = req.body;
-
+ 
     // Build profile object
     const profileFields = {};
     profileFields.user = req.user.id;
