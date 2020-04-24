@@ -12,12 +12,12 @@ const ListMy = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(6);
 
- 
+  
 
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
-      const res = await axios.get(`https://s-rf-heroku.herokuapp.com:5000/api/Luminaries/`);
+      const res = await axios.get(`/api/Luminaries/`);
       setPosts(res.data);
       setLoading(false);
     };

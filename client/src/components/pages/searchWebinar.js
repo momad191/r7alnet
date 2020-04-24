@@ -118,7 +118,7 @@ handlePageClick = (e) => {
 
 
   componentDidMount() {
-    axios.get('https://s-rf-heroku.herokuapp.com:5000/api/webinars/')
+    axios.get('/api/webinars/')
       .then(response => {
         this.setState({ exercises: response.data })
 
@@ -132,7 +132,7 @@ handlePageClick = (e) => {
   }
 
   deleteExercise(id) {
-    axios.delete('https://s-rf-heroku.herokuapp.com:5000/api/webinars/'+id)
+    axios.delete('/api/webinars/'+id)
       .then(response => { console.log(response.data)});
 
     this.setState({

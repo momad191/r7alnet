@@ -27,7 +27,7 @@ export default class App extends Component {
     receivedData() {
        
         axios
-            .get(`http://localhost:5000/api/webinars/`)
+            .get(`/api/webinars/`)
             .then(res => {
                
                 const data = res.data;
@@ -81,7 +81,7 @@ export default class App extends Component {
 
 
     deleteExercise(id) {
-      axios.delete('http://localhost:5000/api/webinars/'+id)
+      axios.delete('/api/webinars/'+id)
         .then(response => { console.log(response.data)});
   
       this.setState({

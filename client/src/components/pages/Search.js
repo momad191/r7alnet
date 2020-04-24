@@ -22,14 +22,14 @@ class Search extends Component {
 
     async componentDidMount() {
         const { data: users } = await axios.get(
-            `https://s-rf-heroku.herokuapp.com:5000/api/webinars/`
+            `/api/webinars/`
         );
         this.setState({ users });
     }
 
 
     deleteExercise(id) {
-        axios.delete('https://s-rf-heroku.herokuapp.com:5000/api/webinars/'+id)
+        axios.delete('/api/webinars/'+id)
           .then(response => { console.log(response.data)});
     
         this.setState({

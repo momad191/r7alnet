@@ -32,7 +32,7 @@ export default class EditLuminariesImg extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://s-rf-heroku.herokuapp.com:5000/api/Luminaries/'+this.props.match.params.id)
+    axios.get('/api/Luminaries/'+this.props.match.params.id)
       .then(response => {
         this.setState({
           L_name: response.data.L_name,
@@ -43,7 +43,7 @@ export default class EditLuminariesImg extends Component {
         console.log(error);
       })
 
-    axios.get('https://s-rf-heroku.herokuapp.com:5000/api/users/')
+    axios.get('/api/users/')
       .then(response => {
         if (response.data.length > 0) {
           this.setState({
@@ -102,7 +102,7 @@ export default class EditLuminariesImg extends Component {
     // formData.append('L_biography', this.state.L_biography);
  
     //this.props.addWebinars(formData);
-   axios.post('https://s-rf-heroku.herokuapp.com:5000/api/Luminaries/EditLuminariesImg/' + this.props.match.params.id, formData)
+   axios.post('/api/Luminaries/EditLuminariesImg/' + this.props.match.params.id, formData)
    .then(res => console.log(res.data));
    window.location = '/AllLuminaries';
      

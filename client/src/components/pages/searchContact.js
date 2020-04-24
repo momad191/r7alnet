@@ -120,7 +120,7 @@ handlePageClick = (e) => {
 
 
   componentDidMount() {
-    axios.get('https://s-rf-heroku.herokuapp.com:5000/api/contact/')
+    axios.get('/api/contact/')
       .then(response => {
         this.setState({ exercises: response.data })
 
@@ -134,7 +134,7 @@ handlePageClick = (e) => {
   }
 
   deleteExercise(id) {
-    axios.delete('https://s-rf-heroku.herokuapp.com:5000/api/contact/'+id)
+    axios.delete('/api/contact/'+id)
       .then(response => { console.log(response.data)});
 
     this.setState({

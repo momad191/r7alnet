@@ -16,7 +16,7 @@ const ListMy = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
-      const res = await axios.get(`https://s-rf-heroku.herokuapp.com:5000/api/profile/`);
+      const res = await axios.get(`/api/profile/`);
       setPosts(res.data);
       setLoading(false);
     };

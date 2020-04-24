@@ -42,7 +42,7 @@
     ]
   },
   
-  "proxy": " https://s-rf-heroku.herokuapp.com:5000"
+  "proxy": "http://localhost.com:5000"
  
 }
    

@@ -35,7 +35,7 @@ export default class Editwebinars extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://s-rf-heroku.herokuapp.com:5000/api/Luminaries/'+this.props.match.params.id)
+    axios.get('/api/Luminaries/'+this.props.match.params.id)
       .then(response => {
         this.setState({
 
@@ -56,7 +56,7 @@ export default class Editwebinars extends Component {
         console.log(error);
       })
 
-    axios.get('https://s-rf-heroku.herokuapp.com:5000/api/users/')
+    axios.get('/api/users/')
       .then(response => {
         if (response.data.length > 0) {
           this.setState({
@@ -131,7 +131,7 @@ export default class Editwebinars extends Component {
 
     console.log(luminaries);
 
-    axios.post('https://s-rf-heroku.herokuapp.com:5000/api/Luminaries/update/' + this.props.match.params.id, luminaries)
+    axios.post('/api/Luminaries/update/' + this.props.match.params.id, luminaries)
     .then(res => console.log(res.data));
 
    window.location = '/Allluminaries';
