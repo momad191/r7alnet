@@ -6,30 +6,51 @@ import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../actions/post';
 import ConfirmButton from "./ConfirmButton";
 import "./styles.css";
- 
+  
 const PostItem = ({
   addLike,
   removeLike, 
   deletePost,
   auth,
-  post: { _id, text, name, avatar, user, likes, comments, date },
+  post: { _id, title_article,title_journal,volume,pages,DOI,ISSN, name, avatar, user, likes, comments, date },
   showActions
 }) => (
 
-   
+    
   <div style={{border:"1px solid #000" , backgroundColor:"#E0E3E5"}} className='post bg-white p-1 my-1'>
     <div>
       <Link to={`/profile/${user}`}>
         <img className='round-img' src={avatar} alt='' />
-        <h4>{name}</h4>
+        <h4 style={{ color:"#000" , fontSize:"15px", fontWeight:'bold'}} >{name}</h4>
       </Link>
     </div>
     <div>
-      <Link to={`/posts/${_id}`} >
-      <p style={{color:"#000",fontSize:"19px"}} className='my-1'>{text}</p>
+ 
+      <Link to={`/posts/${_id}`} >  
+      <p style={{color:"#000",fontSize:"19px" ,fontWeight:'bold'}} className='my-1'>
+        <span style={{color:"#0D33B6",fontSize:"15px" ,fontWeight:'bold'}}>Article Title:</span>{title_article}</p>
       </Link>
-      <p className='post-date'>
-        Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
+
+      <Link to={`/posts/${_id}`} >
+      <p style={{color:"#000",fontSize:"19px" ,fontWeight:'bold'}} className='my-1'>
+        <span style={{color:"#0D33B6",fontSize:"15px",fontWeight:'bold'}}>Journal Title:</span>{title_journal}</p>
+      </Link>
+ 
+      <Fragment>
+      <p style={{color:"#000",fontSize:"19px" ,fontWeight:'bold'}} className='my-1'>
+
+        <span style={{color:"#0D33B6",fontSize:"15px",fontWeight:'bold'}}>Volume:</span>{volume} &nbsp;&nbsp; 
+        <span style={{color:"#0D33B6",fontSize:"15px",fontWeight:'bold'}}>Pages:</span>{pages} &nbsp;&nbsp;
+        <span style={{color:"#0D33B6",fontSize:"15px",fontWeight:'bold'}}>DOI:</span>{DOI} &nbsp;&nbsp;
+        <span style={{color:"#0D33B6",fontSize:"15px",fontWeight:'bold'}}>ISSN:</span>{ISSN}
+        </p>
+
+
+        </Fragment>
+
+
+      <p  style={{ color:"#000" , fontSize:"13px", fontWeight:'bold'}} className='post-date '>
+        Posted on <Moment  format='YYYY/MM/DD'>{date}</Moment>
       </p>
  
       {showActions && (

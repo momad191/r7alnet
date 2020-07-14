@@ -29,7 +29,7 @@ export default class Editwebinars extends Component {
         L_biography: ''
     }
   }
-
+ 
   componentDidMount() {
     axios.get('/api/Luminaries/'+this.props.match.params.id)
       .then(response => {
@@ -110,7 +110,7 @@ export default class Editwebinars extends Component {
  
   onSubmit(e) {
     e.preventDefault();
-
+ 
     const luminaries = {
      // L_Img: this.state.L_Img,
       L_name: this.state.L_name,

@@ -52,8 +52,9 @@ const Exercise = props => (
      
      
     <td style={tdStyle}>
-      <Link to={"/EditLuminaries/"+props.exercise._id}>Edit</Link> | 
-     
+      <Link to={"/EditLuminaries/"+props.exercise._id}>Edit</Link> 
+      </td>
+      <td style={tdStyle}>
        <Link to="#" onClick={() => { props.deleteExercise(props.exercise._id) }}>Delete</Link>
     </td>
       
@@ -111,7 +112,7 @@ handlePageClick = (e) => {
       .then(response => {
         this.setState({ exercises: response.data })
 
-      })
+      }) 
       .catch((error) => {
         console.log(error);
       })
@@ -125,16 +126,24 @@ handlePageClick = (e) => {
       exercises: this.state.exercises.filter(el => el._id !== id)
     })
   }
-  
+   
   exerciseList() {
     return this.state.exercises
-    .filter(luminaries => luminaries.L_name.includes(this.state.search))
+
+    // .filter(luminaries => luminaries.L_name.includes(this.state.search))
+
+    .filter(luminaries=>{
+
+      return luminaries.L_name.toLowerCase().indexOf(this.state.search.toLowerCase())>=0
+    })
+
     .map(currentexercise => {
       return <Exercise exercise={currentexercise} deleteExercise={this.deleteExercise} key={currentexercise._id}/>;
     })
+
   }
 
-
+ 
 
 
 
@@ -148,7 +157,7 @@ handlePageClick = (e) => {
       <div>
         
         <h1>Search Luminaries</h1>
-        <Link to="/WebinarRegistration" title="Dashboard" className=''><i className="fas fa-plus text-primary"></i> <span className="hide-sm">Add </span></Link> <br/>
+        <Link to="/LuminariesRegistration" title="Dashboard" className=''><i className="fas fa-plus text-primary"></i> <span className="hide-sm">Add </span></Link> <br/>
 
         {/* <Link to="/Search" title="Dashboard" className=''><i className="fas fa-search text-primary"></i> <span className="hide-sm">Search </span></Link> */}
 
@@ -174,7 +183,7 @@ handlePageClick = (e) => {
               <th><h1 className="middle text-dark">Key_academic</h1></th> */}
               {/* <th style={thStyle}>other_information</th>
               <th style={thStyle}>date</th> */}
-              <th style={thStyle}>Action</th>
+              <th colspan="2" style={thStyle}>Action</th>
             </tr>
           </thead>
           <tbody>

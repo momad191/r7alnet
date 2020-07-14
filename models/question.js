@@ -5,11 +5,28 @@ const QuestionSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: 'users'
-  },
+  },  
   text: {
     type: String,
     required: true
   },
+   
+  body: {
+    type: String
+  },
+
+  tags: {
+    type: [String],
+    required: true
+  },
+  formul: {
+    type: [String],
+    default: "NA",
+    required: true
+  },
+  
+ 
+
   name: {
     type: String
   },

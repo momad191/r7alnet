@@ -7,7 +7,7 @@ const Landing = ({ isAuthenticated }) => {
   if (isAuthenticated) {
     return <Redirect to='/dashboard' />;
   }
- 
+   
   return (
     <section className='landing'>
       <div className='dark-overlay'>
@@ -28,7 +28,7 @@ const Landing = ({ isAuthenticated }) => {
       </div>
     </section>
   );
-};
+}; 
 
 Landing.propTypes = {
   isAuthenticated: PropTypes.bool

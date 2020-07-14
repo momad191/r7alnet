@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-  
+   
   name: {
     type: String,
     required: true
@@ -17,6 +17,11 @@ const UserSchema = new mongoose.Schema({
   },
   avatar: {
     type: String
+  },
+  cv: {
+    type: String,
+    default: "no uploaded cv"
+     
   },
   date: {
     type: Date,

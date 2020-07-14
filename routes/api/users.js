@@ -25,11 +25,11 @@ const storage = multer.diskStorage({
 var upload = multer({
   storage: storage,
   fileFilter: (req, file, cb) => {
-      if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+      if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg" || file.mimetype == "application/pdf" || file.mimetype == "application/msword" || file.mimetype == "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
           cb(null, true);
       } else {
           cb(null, false);
-          return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
+          return cb(new Error('Only .png, .jpg  .pdf and .jpeg format allowed!'));
       }
   }
 });
@@ -72,6 +72,49 @@ router.route('/EdituserImg/:id').post(upload.single('avatar'),auth,(req, res) =>
 
       user.save()
         .then(() => res.json('User image updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+  
+
+//************************************************************************ */
+
+router.route('/update/:id').post((req, res) => {
+  User.findById(req.params.id)
+    .then(user => {
+      user.name = req.body.name;
+      user.email = req.body.email;
+      // luminaries.L_contribution = req.body.L_contribution;
+      // luminaries.L_date = req.body.L_date;
+      // luminaries.L_Website = req.body.L_Website;
+      // luminaries.L_biography = req.body.L_biography;
+      // luminaries.duration = Number(req.body.duration);
+      // luminaries.date = Date.parse(req.body.date);
+      
+      user.save()
+        .then(() => res.json('User Updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+
+
+//******************************************************************** */
+ 
+ 
+router.route('/Editusercv/:id').post(upload.single('cv'),auth,(req, res) => {
+  //const url = req.protocol + '://' + req.get('host')
+  const url = 'https://s-rf-heroku.herokuapp.com'
+  User.findById(req.params.id)
+    .then(user => {
+      user.name = req.body.name;   
+      user.cv = url + '/public/' + req.file.filename;
+
+      user.save()
+        .then(() => res.json('User cv updated!'))
         .catch(err => res.status(400).json('Error: ' + err));
     })
     .catch(err => res.status(400).json('Error: ' + err));

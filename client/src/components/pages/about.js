@@ -7,7 +7,7 @@ const about = () => {
   return (
     <Fragment>
 
-
+ 
      
      <h1 className="middle text-primary"><i class="fas fa-star"></i> About SRF </h1>
      
@@ -101,7 +101,7 @@ const about = () => {
       
      
 
-         
+                
    
     </Fragment>
   );

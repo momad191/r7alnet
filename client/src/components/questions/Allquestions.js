@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Posts from '../questions/Posts';
 import Pagination from '../pages/Pagination';
-import axios from 'axios';
+//import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../pages/App.css';
-   
+    
 const ListMy = () => {
  
   const [posts, setPosts] = useState([]);

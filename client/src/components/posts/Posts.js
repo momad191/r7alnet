@@ -8,7 +8,7 @@ import { getPosts } from '../../actions/post';
 import Pagination from '../pages/Pagination';
 import Posts1 from '../posts/WWListPosts';
 import { Link } from 'react-router-dom';
-
+ 
 const Posts = ({ getPosts, post: { posts, loading } }) => {
 
   
@@ -36,7 +36,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
     <Fragment>
       <h1 className='large text-primary'>Publications</h1>
       <p className='lead'>
-        <i className='fas fa-user' /> Welcome to the community
+        <i className='fas fa-book' /> Welcome to the community
       </p>
 
     
@@ -45,8 +45,8 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
       </Link>
 
 
-      <Link to='/searchPosts' className='btn btn-primary'>
-      <i className='fas fa-search' /> Search Posts
+      <Link to='/searchPostsByArticle' className='btn btn-primary'>
+      <i className='fas fa-search' /> Search 
       </Link>
 
 
@@ -59,14 +59,14 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
         ))}
       </div> */}
 
-      
+    <Posts1 posts={currentPosts} loading={loading} />
      <h5>Pages</h5>
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={posts.length}
         paginate={paginate}
       />
-      <Posts1 posts={currentPosts} loading={loading} />
+      
 
 
     </Fragment>

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../actions/QuestionAction';
 import PostItem from './PostItem';
 // const thStyle =
-//     {
+//     { s
 //          background:'#cacaca',
 //          verticalalign: 'middle',
 //          fontweight: '600',

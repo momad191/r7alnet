@@ -13,7 +13,7 @@ export default class EditLuminariesImg extends Component {
     super(props);
     this.onChangeavatar = this.onChangeavatar.bind(this);
     this.onChangename = this.onChangename.bind(this);
-    // this.onChangeL_name = this.onChangeL_name.bind(this);
+     this.onChangeemail = this.onChangeemail.bind(this);
     // this.onChangeL_specialty = this.onChangeL_specialty.bind(this);
     // this.onChangeL_contribution = this.onChangeL_contribution.bind(this);
     // this.onChangeL_Website = this.onChangeL_Website.bind(this);
@@ -23,7 +23,7 @@ export default class EditLuminariesImg extends Component {
     this.state = {
       name: '',
       avatar: '',
-        // L_specialty: '',
+      email: ''
         // L_contribution: '',
         // L_Website: '',
         // L_date: '',
@@ -38,6 +38,7 @@ export default class EditLuminariesImg extends Component {
       .then(response => {
         this.setState({
           name: response.data.name,
+          email: response.data.email,
           avatar: response.data.avatar,
         })   
       })
@@ -56,9 +57,9 @@ export default class EditLuminariesImg extends Component {
    this.setState({ name: e.target.value });
   };
 
-  // onChangeL_specialty = e => {
-  //   this.setState({ L_specialty: e.target.value });
-  //  };
+  onChangeemail = e => {
+    this.setState({ email: e.target.value });
+   };
 
   //  onChangeL_contribution = e => {
   //   this.setState({ L_contribution: e.target.value });
@@ -85,16 +86,17 @@ export default class EditLuminariesImg extends Component {
     let formData = new FormData();
     formData.append('avatar', this.state.avatar);
     formData.append('name', this.state.name);
+    formData.append('email', this.state.email);
     // formData.append('L_specialty', this.state.L_specialty);
     // formData.append('L_contribution', this.state.L_contribution);
     // formData.append('L_Website', this.state.L_Website);
     // formData.append('L_date', this.state.L_date);
     // formData.append('L_biography', this.state.L_biography);
-
+ 
     //this.props.addWebinars(formData);
    axios.post('https://s-rf-heroku.herokuapp.com/api/users/EdituserImg/' + this.props.match.params.id, formData)
    .then(res => console.log(res.data));
-    window.location = '/dashboard';
+    window.location = '/cvcontroll';
     
    } 
 
@@ -132,8 +134,8 @@ export default class EditLuminariesImg extends Component {
 
   render() {
     return (
-
-     
+  
+       
    <div className="form-container">
    <form className="form" encType="multipart/form-data" onSubmit={this.onSubmit}> 
 
@@ -142,10 +144,15 @@ export default class EditLuminariesImg extends Component {
 
    
    <div className="form-group">
-   <label className="form-label">The Name</label>
-   <input  className="form-contact" placeholder="" type="text" value={this.state.name} onChange={this.onChangename} required/>
+   {/* <label className="form-label">The Name</label> */}
+   <input  className="form-contact" placeholder="" type="hidden" value={this.state.name} onChange={this.onChangename}  />
    </div>
 
+
+   <div className="form-group">
+   {/* <label className="form-label">Email</label> */}
+   <input  className="form-contact" placeholder="" type="hidden" value={this.state.email} onChange={this.onChangeemail}  />
+   </div>
  
   
       <div className="form-group">
@@ -156,15 +163,16 @@ export default class EditLuminariesImg extends Component {
         onChange={this.onChangeavatar} required />
       </div>
       
-     <img src={this.state.avatar} alt='' width='200px' height='200px' className='round-square' />
+     {/* <img src={this.state.avatar} alt='' width='200px' height='200px' className='round-square' /> */}
 
 <div className="form-group">
-  <button style={{width :'500px' , height:'50px', background:'#257E83', color:'#fff', cursor:'pointer' }}  type="submit" className="submit-btn">Update</button>
+  <button style={{width :'500px' , height:'50px', background:'#257E83', color:'#fff', cursor:'pointer' }}  type="submit" className="submit-btn">Upload</button>
   </div>
   </form>
-  <Link to='/' className='btn btn-dark my-1'>
+
+  {/* <Link to='/' className='btn btn-dark my-1'>
             Back To dashboard
-          </Link>
+          </Link> */}
   </div>
   
         

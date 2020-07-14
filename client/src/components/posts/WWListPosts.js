@@ -49,7 +49,7 @@ const Posts = ({ posts, loading ,
     return <h2>Loading...</h2>;
   }
 
- 
+  
  
   return (
   

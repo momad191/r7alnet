@@ -1,10 +1,10 @@
-const express = require('express');
-const request = require('request');
+const express = require('express'); 
+const request = require('request'); 
 const config = require('config');
 const router = express.Router();
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator/check');
-
+ 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const Post = require('../../models/Post');
@@ -12,6 +12,69 @@ const Post = require('../../models/Post');
 // @route    GET api/profile/me
 // @desc     Get current users profile
 // @access   Private
+
+//----------------------------------------------------
+
+router.route('/:id').delete((req, res) => {
+  Profile.findByIdAndDelete(req.params.id)
+  .then(() => res.json('Profile deleted.'))
+  .catch(err => res.status(400).json('Error: ' + err));
+});
+
+//---------------------------------------
+router.route('/pro/:id').get((req, res) => {
+  Profile.findById(req.params.id).populate('user', ['name', 'avatar'])
+    .then(luminaries => res.json(luminaries))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+//----------------------------------------
+
+router.get('/show', async (req, res) => {
+  try {
+    const profiles = await Profile.find()
+    .sort({ date: -1 })
+    .populate('user', ['name', 'avatar']);
+    res.json(profiles);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+
+
+
+
+
+//---------------------------------------------
+
+
+
+router.route('/update/:id').post((req, res) => {
+
+ Profile.findById(req.params.id)
+
+  //  Profile.findById({user: req.params.id}).populate('user', ['name', 'avatar'])
+
+    .then(profile => {
+      profile.status = req.body.status;
+      profile.company = req.body.company;
+      profile.department = req.body.department;
+      profile.location = req.body.location;
+      profile.skills = req.body.skills;
+      profile.bio = req.body.bio;
+      profile.save()
+        .then(() => res.json('profile updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+ 
+
+//-----------------------------------------------------
+
+
 router.get('/me', auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({ user: req.user.id }).populate(
@@ -64,14 +127,19 @@ router.post(
       facebook,
       twitter,
       instagram,
-      linkedin
+      linkedin,
+      github,
+      stackoverflow,
+      researchgate,
+      orcid,
+      department
     } = req.body;
  
     // Build profile object
     const profileFields = {};
     profileFields.user = req.user.id;
     if (company) profileFields.company = company;
-    if (website) profileFields.website = website;
+    if (department) profileFields.department = department;
     if (location) profileFields.location = location;
     if (bio) profileFields.bio = bio;
     if (status) profileFields.status = status;
@@ -87,6 +155,12 @@ router.post(
     if (facebook) profileFields.social.facebook = facebook;
     if (linkedin) profileFields.social.linkedin = linkedin;
     if (instagram) profileFields.social.instagram = instagram;
+    if (github) profileFields.social.github = github;
+    if (stackoverflow) profileFields.social.stackoverflow = stackoverflow;
+    if (researchgate) profileFields.social.researchgate = researchgate;
+    if (orcid) profileFields.social.orcid = orcid;
+    if (website) profileFields.social.website = website;
+     
 
     try {
       // Using upsert option (creates new doc if no match is found):
@@ -101,12 +175,12 @@ router.post(
       res.status(500).send('Server Error');
     }
   }
-);
+); 
   
 // @route    GET api/profile
 // @desc     Get all profiles
 // @access   Public
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
   try {
     const profiles = await Profile.find()
     .sort({ date: -1 })
@@ -126,7 +200,7 @@ router.get('/user/:user_id', async (req, res) => {
     const profile = await Profile.findOne({
       user: req.params.user_id
     }).populate('user', ['name', 'avatar']);
-
+ 
     if (!profile) return res.status(400).json({ msg: 'Profile not found' });
 
     res.json(profile);
@@ -398,7 +472,7 @@ router.get('/github/:username', (req, res) => {
 
       if (response.statusCode !== 200) {
         return res.status(404).json({ msg: 'No Github profile found' });
-      }
+      } 
 
       res.json(JSON.parse(body));
     });

@@ -4,7 +4,7 @@ import axios from 'axios';
 import Moment from 'react-moment';
 //import Spinner from '../layout/Spinner';
 //import './App.css';
- 
+  
 // const thStyle =
 //     { 
 //          background:'#cacaca',
@@ -34,7 +34,7 @@ import Moment from 'react-moment';
       borderradius: '10px',
       background: '#C5D5D5',
       marginright:'0px',
-      height:'25px',
+      height:'35px',
       border: '0.5px solid #09CAD3'
      }
 
@@ -54,7 +54,7 @@ const Exercise = props => (
 //     </td>
 //   </tr>
 
-
+ 
 
 <div style={{border:"1px solid #000" , backgroundColor:"#E0E3E5"}} className='post bg-white p-1 my-1'>
     <div>
@@ -65,9 +65,9 @@ const Exercise = props => (
     </div>
     <div>
       < Link to={"/posts/"+props.exercise._id} >
-      <p style={{color:"#000",fontSize:"19px"}} className='my-1'>{props.exercise.text}</p>
+      <p style={{color:"#000",fontSize:"19px"}} className='my-1'>{props.exercise.title_article}</p>
       </Link>
-      <p className='post-date'>
+      <p style={{color:"#000",fontSize:"15px"}} className='post-date'>
         Posted on <Moment format='YYYY/MM/DD'>{props.exercise.date}</Moment>
       </p>
 
@@ -132,7 +132,7 @@ export default class ExercisesList extends Component {
 
     this.state = {
       exercises: [],
-      search:[],
+      search:"",
        
      
 
@@ -191,7 +191,15 @@ handlePageClick = (e) => {
   
   exerciseList() {
     return this.state.exercises
-    .filter(luminaries => luminaries.text.includes(this.state.search))
+    // .filter(luminaries => luminaries.title_article.includes(this.state.search))
+
+    .filter(luminaries=>{
+      return luminaries.title_article.toLowerCase().indexOf(this.state.search.toLowerCase())>=0
+
+    })
+
+
+
     .map(currentexercise => {
       return <Exercise exercise={currentexercise} deleteExercise={this.deleteExercise} key={currentexercise._id}/>;
     })
@@ -202,13 +210,19 @@ handlePageClick = (e) => {
 
 
 
-
   render() {
     return (
       <div>
-        <h1>Search Posts</h1>
+        <h1>Search Publications</h1>
 
-        <input  style={inputTextStyle} type='text' placeholder="Search by article" onChange={this.searchChanged} value={this.state.search}/>
+        <Link to="/PublicationsByArticle" title="Dashboard" className=''><i className="fas fa-search text-primary"></i> <span className="hide-sm text-success">By Title of Article </span></Link>--
+        <Link to="/PublicationsByJournal" title="Dashboard" className=''><i className="fas fa-search text-primary"></i> <span className="hide-sm text-dark">By Title of Journal </span></Link>--
+        <Link to="/searchMembersBySpecialty" title="Dashboard" className=''><i className="fas fa-search text-primary"></i> <span className="hide-sm text-dark">By Name </span></Link>--
+        <Link to="/searchMembersByName" title="Dashboard" className=''><i className="fas fa-search text-primary"></i> <span className="hide-sm text-dark">By Date </span></Link>--
+
+ 
+
+        <input  style={inputTextStyle} type='text' placeholder="Type Title of Article" onChange={this.searchChanged} value={this.state.search}/>
        
         { this.exerciseList() }
       </div>

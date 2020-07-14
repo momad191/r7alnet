@@ -5,122 +5,123 @@ const PostSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: 'users'
-  },
-  text: {
-    type: String,
-    required: true
-  },
-
-
-
-  book: {
+  }, 
+    
+  first_name: {
     type: String
   },
-  booklet: {
-    type: String
-  },
-  inbook: {
-    type: String
-  },
-  incollection: {
-    type: String
-  },
-  inproceedings: {
-    type: String
-  },
-  manual: {
-    type: String
-  },
-  mastersthesis: {
-    type: String
-  },
-  misc: {
-    type: String
-  },
-  phdthesis: {
-    type: String
-  },
-  proceedings: {
-    type: String
-  },
-  techreport: {
-    type: String
-  },
-  unpublished: {
-    type: String
-  },
-  address: {
-    type: String
-  },
-  annote: {
-    type: String
-  },
-  author: {
-    type: String
-  },
-  booktitle: {
-    type: String
-  },
-  chapter: {
-    type: String
-  },
-  crossref: {
-    type: String
-  },
-  edition: {
-    type: String
-  },
-  editor: {
-    type: String
-  },
-  howpublished: {
-    type: String
-  },
-  institution: {
-    type: String
-  },
-  journal: {
-    type: String
-  },
-  key: {
-    type: String
-  },
-  month: {
-    type: String
-  },
-  note: {
-    type: String
-  },
-  number: {
-    type: String
-  },
-  organization: {
-    type: String
-  },
-  pages: {
-    type: String
-  },
-  publisher: {
-    type: String
-  },
-  school: {
-    type: String
-  },
-  series: {
-    type: String
-  },
-  title: {
-    type: String
-  },
-  type: {
-    type: String
-  },
-  volume: {
+  last_name: {
     type: String
   },
   year: {
     type: String
   },
+  title_article: {
+    type: String,
+    required: true
+  },
+  title_journal: {
+    type: String
+  },
+  volume: {
+    type: String
+  },
+  pages: {
+    type: String
+  },
+  DOI: {
+    type: String
+  },
+  ISSN: {
+    type: String
+  },
+
+
+
+  // phdthesis: {
+  //   type: String
+  // },
+  // proceedings: {
+  //   type: String
+  // },
+  // techreport: {
+  //   type: String
+  // },
+  // unpublished: {
+  //   type: String
+  // },
+  // address: {
+  //   type: String
+  // },
+  // annote: {
+  //   type: String
+  // },
+  // author: {
+  //   type: String
+  // },
+  // booktitle: {
+  //   type: String
+  // },
+  // chapter: {
+  //   type: String
+  // },
+  // crossref: {
+  //   type: String
+  // },
+  // edition: {
+  //   type: String
+  // },
+  // editor: {
+  //   type: String
+  // },
+  // howpublished: {
+  //   type: String
+  // },
+  // institution: {
+  //   type: String
+  // },
+  // journal: {
+  //   type: String
+  // },
+  // key: {
+  //   type: String
+  // },
+  // month: {
+  //   type: String
+  // },
+  // note: {
+  //   type: String
+  // },
+  // number: {
+  //   type: String
+  // },
+  // organization: {
+  //   type: String
+  // },
+  // pages: {
+  //   type: String
+  // },
+  // publisher: {
+  //   type: String
+  // },
+  // school: {
+  //   type: String
+  // },
+  // series: {
+  //   type: String
+  // },
+  // title: {
+  //   type: String
+  // },
+  // type: {
+  //   type: String
+  // },
+  // volume: {
+  //   type: String
+  // },
+  // year: {
+  //   type: String
+  // },
    
 
 

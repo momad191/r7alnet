@@ -8,6 +8,7 @@ const ProfileTop = ({
     location,
     website,
     social,
+    youtube,
     user: { name, avatar }
   }
 }) => {
@@ -19,9 +20,13 @@ const ProfileTop = ({
         {status} {company && <span> at {company}</span>}
       </p>
       <p> From:{location && <span>{location}</span>}</p>
+
+      <p> From:{social.youtube && <span>{social.youtube}</span>}</p>
+
+
       <div className='icons my-1'>
-        {website && (
-          <a href={`https://${website}`} target='_blank' rel='noopener noreferrer'>
+        {social.website && (
+          <a href={social.website} target='_blank' rel='noopener noreferrer'>
             <i className='fas fa-globe fa-2x' />
           </a>
         )}
@@ -30,9 +35,9 @@ const ProfileTop = ({
             <i className='fab fa-twitter fa-2x' />
           </a>
         )}
-        {social && social.facebook && (
-          <a href={social.facebook} target='_blank' rel='noopener noreferrer'>
-            <i className='fab fa-facebook fa-2x' />
+        {social && social.github && (
+          <a href={social.github} target='_blank' rel='noopener noreferrer'>
+            <i className='fab fa-github fa-2x' />
           </a>
         )}
         {social && social.linkedin && (
@@ -45,16 +50,35 @@ const ProfileTop = ({
             <i className='fab fa-youtube fa-2x' />
           </a>
         )}
-        {social && social.instagram && (
-          <a href={social.instagram} target='_blank' rel='noopener noreferrer'>
-            <i className='fab fa-instagram fa-2x' />
+
+        {social && social.researchgate && (
+          <a href={social.researchgate} target='_blank' rel='noopener noreferrer'>
+            <i className='fab fa-researchgate fa-2x' />
           </a>
         )}
+
+
+{social && social.stackoverflow && (
+          <a href={social.stackoverflow} target='_blank' rel='noopener noreferrer'>
+            stackoverflow
+          </a>
+        )}
+
+
+
+        {social && social.orcid && (
+          <a href={social.orcid} target='_blank' rel='noopener noreferrer'>
+           Orcid
+          </a>
+        )}
+
+
+
       </div>
     </div>
   );
 };
-
+  
 ProfileTop.propTypes = {
   profile: PropTypes.object.isRequired
 };

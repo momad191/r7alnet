@@ -52,13 +52,13 @@ const Posts = ({ posts, loading }) => {
  
           </thead>
 
-
+ 
             
           <tbody  style={{ width:'100%' , fontSize:'13px' }}>
        
  {posts.map(pd => (
 
-
+ 
     <tr >
     <td style={tdStyle}><Link to={"/EditLuminariesImg/"+pd._id}><img src={pd.L_Img} width='100' height='55' alt="" /></Link></td>
     <td style={tdStyle}>{pd.L_name}</td>

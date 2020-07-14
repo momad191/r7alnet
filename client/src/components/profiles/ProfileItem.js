@@ -15,7 +15,7 @@ const ProfileItem = ({
   }
 }) => {
   return (
-    
+     
     <div className="card">
       <Link to={`/profile/${_id}`} > <img src={avatar} alt="" style={{width:'200px', height:'150px'}} /></Link>     
         <h1 style={{fontSize:'13px' , fontWeight:'Bold', color:'#000'}}>{name}</h1>

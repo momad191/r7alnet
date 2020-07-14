@@ -3,7 +3,7 @@ import { setAlert } from './alert';
 import { 
   GET_POSTS,
   POST_ERROR,
-  UPDATE_LIKES,
+  UPDATE_LIKES, 
   DELETE_POST,
   ADD_POST,
   GET_POST,
@@ -89,7 +89,7 @@ export const addPost = formData => async dispatch => {
       'Content-Type': 'application/json'
     }
   };
-
+  
   try {
     const res = await axios.post('/api/questions', formData, config);
 
@@ -99,6 +99,7 @@ export const addPost = formData => async dispatch => {
     });
  
     dispatch(setAlert('Question Created', 'success'));
+    window.location = '/questions';
     
 
   } catch (err) {

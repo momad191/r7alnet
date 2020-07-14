@@ -9,7 +9,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   useEffect(() => {
     getProfiles();
   }, [getProfiles]);
-  
+   
   return (
     <Fragment>
       {loading ? (
@@ -26,7 +26,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
               ))
             ) : (
               <h4>No profiles found...</h4>
-            )}
+            )} 
           
         </Fragment>
       )}

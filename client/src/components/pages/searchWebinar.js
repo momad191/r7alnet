@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 //import './App.css';
-
+ 
 const thStyle =
     {
          background:'#cacaca',
@@ -139,10 +139,20 @@ handlePageClick = (e) => {
       exercises: this.state.exercises.filter(el => el._id !== id)
     })
   }
-
+ 
   exerciseList() {
     return this.state.exercises
-    .filter(webinar => webinar.Surname.includes(this.state.search))
+
+    // .filter(webinar => webinar.Surname.includes(this.state.search))
+
+
+    .filter(webinar=>{
+
+      return webinar.Surname.toLowerCase().indexOf(this.state.search.toLowerCase())>=0
+    })
+
+
+
     .map(currentexercise => {
       return <Exercise exercise={currentexercise} deleteExercise={this.deleteExercise} key={currentexercise._id}/>;
     })

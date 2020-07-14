@@ -3,6 +3,12 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
+import github1 from './logos/github.png';
+import Linkedin1 from './logos/Linkedin1.png';
+import stackoverflow1 from './logos/stackoverflow1.jpg';
+import researchgate1 from './logos/rpic.jpg';
+import orcid1 from './logos/orcid1.png';
+
 
 const EditProfile = ({
   profile: { profile, loading },
@@ -22,7 +28,12 @@ const EditProfile = ({
     facebook: '',
     linkedin: '',
     youtube: '',
-    instagram: ''
+    github: '',
+    stackoverflow: '',
+    researchgate: '',
+    orcid: '',
+    department:''
+
   });
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
@@ -32,7 +43,7 @@ const EditProfile = ({
 
     setFormData({
       company: loading || !profile.company ? '' : profile.company,
-      website: loading || !profile.website ? '' : profile.website,
+      department: loading || !profile.department ? '' : profile.department,
       location: loading || !profile.location ? '' : profile.location,
       status: loading || !profile.status ? '' : profile.status,
       skills: loading || !profile.skills ? '' : profile.skills.join(','),
@@ -43,7 +54,12 @@ const EditProfile = ({
       facebook: loading || !profile.social ? '' : profile.social.facebook,
       linkedin: loading || !profile.social ? '' : profile.social.linkedin,
       youtube: loading || !profile.social ? '' : profile.social.youtube,
-      instagram: loading || !profile.social ? '' : profile.social.instagram
+      github: loading || !profile.social ? '' : profile.social.github,
+      stackoverflow: loading || !profile.social ? '' : profile.social.stackoverflow,
+      researchgate: loading || !profile.social ? '' : profile.social.researchgate,
+      orcid: loading || !profile.social ? '' : profile.social.orcid,
+      website: loading || !profile.social ? '' : profile.social.website,
+
     });
   }, [loading, getCurrentProfile]);
 
@@ -59,7 +75,11 @@ const EditProfile = ({
     facebook,
     linkedin,
     youtube,
-    instagram
+    github,
+    stackoverflow,
+    researchgate,
+    orcid,
+    department
   } = formData;
 
   const onChange = e =>
@@ -96,7 +116,32 @@ const EditProfile = ({
           </small>
         </div> */}
 
-        <div className='form-group'>
+
+<div className='form-group'>
+        Professional status 
+          <select onChange={e => onChange(e)}  name='status' value={status}>
+          
+          <option value="High school">High school</option>
+          <option value="Undergraduate">Undergraduate</option>
+          <option value="Graduate student">Graduate student</option>
+          <option value="Postgraduate researchers">Postgraduate researchers</option>
+          <option value="Lecturer">Lecturer</option>
+          <option value="Assistant professor">Assistant professor</option>
+          <option value="Professor">Professor</option>
+          <option value="Professor Emeritus">Professor Emeritus</option>
+          <option value="Admin">Admin</option>
+          <option value="Specialist">Specialist</option>
+          <option value="Policy maker">Policy maker</option>
+          </select>
+          <small className='form-text'>
+          Give us an idea of where you are at in your career
+          </small>
+        </div>
+
+
+
+
+        {/* <div className='form-group'>
         Career
           <input
             type='text'
@@ -108,11 +153,29 @@ const EditProfile = ({
           <small className='form-text'>
           Give us an idea of where you are at in your career
           </small>
+        </div> */}
+
+      <div className='form-group'>
+      Place of work 
+          <select onChange={e => onChange(e)}  name='company' value={company}>
+          <option>{company}</option>
+          <option value="University">University</option>
+          <option value="Institute">Institute</option>
+          <option value="School">School</option>
+          <option value="Think Tank">Think Tank</option>
+          <option value="NGO">NGO</option>
+          <option value="Government">Government</option>
+
+          </select>
+          <small className='form-text'>
+          Could be your own company or one you work for
+          </small>
         </div>
 
 
+
         <div className='form-group'>
-        Company
+        Place of work (What else ? )
           <input
             type='text'
             placeholder='Company'
@@ -124,23 +187,24 @@ const EditProfile = ({
             Could be your own company or one you work for
           </small>
         </div>
+
         <div className='form-group'>
-        Website
+           Specialization
           <input
             type='text'
-            placeholder='Website'
-            name='website'
-            value={website}
+            placeholder='Department'
+            name='department'
+            value={department}
             onChange={e => onChange(e)}
           />
           <small className='form-text'>
-            Could be your own or a company website
+          your  specialization
           </small>
         </div>
 
 
         <div className='form-group'>
-        Location
+        Country
           {/* <input
             type='text'
             placeholder='Location'
@@ -444,6 +508,7 @@ const EditProfile = ({
           <small className='form-text'>Tell us a little about yourself</small>
         </div>
 
+
         <div className='my-2'>
           <button
             onClick={() => toggleSocialInputs(!displaySocialInputs)}
@@ -457,7 +522,7 @@ const EditProfile = ({
 
         {displaySocialInputs && (
           <Fragment>
-            <div className='form-group social-input'>
+            {/* <div className='form-group social-input'>
               <i className='fab fa-twitter fa-2x' />
               
               <input
@@ -467,9 +532,9 @@ const EditProfile = ({
                 value={twitter}
                 onChange={e => onChange(e)}
               />
-            </div>
-
-            <div className='form-group social-input'>
+            </div> */}
+ 
+            {/* <div className='form-group social-input'>
               <i className='fab fa-facebook fa-2x' />
               <input
                 type='text'
@@ -478,9 +543,9 @@ const EditProfile = ({
                 value={facebook}
                 onChange={e => onChange(e)}
               />
-            </div>
+            </div> */}
 
-            <div className='form-group social-input'>
+            {/* <div className='form-group social-input'>
               <i className='fab fa-youtube fa-2x' />
               <input
                 type='text'
@@ -489,10 +554,11 @@ const EditProfile = ({
                 value={youtube}
                 onChange={e => onChange(e)}
               />
-            </div>
-
+            </div> */}
+ 
             <div className='form-group social-input'>
-              <i className='fab fa-linkedin fa-2x' />
+            {/* <img src={Linkedin1}  width="30px" height="30px" alt="logo"/> */}
+            <i className='fab fa-linkedin fa-2x' />
               <input
                 type='text'
                 placeholder='Linkedin URL'
@@ -501,17 +567,113 @@ const EditProfile = ({
                 onChange={e => onChange(e)}
               />
             </div>
-
-            <div className='form-group social-input'>
-              <i className='fab fa-instagram fa-2x' />
+ 
+            <div className='form-group social-input '>
+            {/* <img src={github1}  width="30px" height="30px" alt="logo"/> */}
+            <i className='fab fa-github fa-2x' />
               <input
                 type='text'
-                placeholder='Instagram URL'
-                name='instagram'
-                value={instagram}
+                placeholder='Github URL'
+                name='github'
+                value={github}
                 onChange={e => onChange(e)}
               />
             </div>
+
+
+          <div className='form-group  social-input'>
+            {/* <img src={researchgate1}  width="30px" height="30px" alt="logo"/> */}
+            <i className='fab fa-researchgate fa-2x' />
+              <input
+                type='text'
+                placeholder='researchgate'
+                name='researchgate'
+                value={researchgate}
+                onChange={e => onChange(e)}
+              />
+            </div>
+
+
+            <div className='form-group  social-input'>
+            {/* <img src={researchgate1}  width="30px" height="30px" alt="logo"/> */}
+            <i className='fab fa-youtube fa-2x' />
+              <input
+                type='text'
+                placeholder='Youtube'
+                name='youtube'
+                value={youtube}
+                onChange={e => onChange(e)}
+              />
+            </div>
+
+ 
+
+            <div className='form-group  social-input'>
+            {/* <img src={researchgate1}  width="30px" height="30px" alt="logo"/> */}
+            <i className='fab fa-twitter fa-2x' />
+              <input
+                type='text'
+                placeholder='Twitter'
+                name='twitter'
+                value={twitter}
+                onChange={e => onChange(e)}
+              />
+            </div>
+
+
+
+            <div className='form-group social-input '>
+            {/* <img src={stackoverflow1}  width="30px" height="30px" alt="logo"/> */}
+            <i className='fab fa-stackoverflow fa-2x' />
+              <input
+                type='text'
+                placeholder='stackoverflow'
+                name='stackoverflow'
+                value={stackoverflow}
+                onChange={e => onChange(e)}
+              />
+            </div>
+
+
+           
+   
+
+            <div className='form-group social-input '>
+
+            {/* <img src={orcid1} width="30px" height="30px" alt="logo"/> */}
+            <i className='fab fa-orcid fa-2x' />
+              <input
+                type='text'
+                placeholder='ORCID'
+                name='orcid'
+                value={orcid}
+                onChange={e => onChange(e)}
+              />
+            </div>
+
+
+            <div className='form-group social-input'>
+							<i className='fab fa-website fa-2x' />
+							{/* ORCID */}
+							<input
+								type='text'
+								placeholder='Personal Wesite'
+								name='website'
+								value={website}
+								onChange={e => onChange(e)}
+							/>
+						</div>
+
+
+
+
+
+
+
+
+
+
+
           </Fragment>
         )}
 

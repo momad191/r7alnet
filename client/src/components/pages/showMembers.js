@@ -3,20 +3,21 @@ import Posts from './WWListMembersForShow';
 import Pagination from './Pagination';
 import axios from 'axios';
 import './App.css';
-
+   
 const ListMy = () => {
-
+ 
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(100);
 
-  
+    
  
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
-      const res = await axios.get(`/api/profile/`);
+      const res = await axios.get(`/api/profile/show`);
+       
       setPosts(res.data);
       setLoading(false);
     };

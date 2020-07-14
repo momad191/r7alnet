@@ -4,16 +4,16 @@ const ProfileSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
-  },
+  },    
   company: {
     type: String
   },
-  website: {
+  department: {  
     type: String
   },
   location: {
     type: String
-  },
+  }, 
   status: {
     type: String,
     required: true
@@ -100,9 +100,21 @@ const ProfileSchema = new mongoose.Schema({
     linkedin: {
       type: String
     },
-    instagram: {
+    github: {
       type: String
-    }
+    },
+    stackoverflow: {
+      type: String
+    },
+    researchgate: {
+      type: String
+    },
+    orcid: {
+      type: String
+    },
+    website: {
+      type: String
+    },
   },
   date: {
     type: Date,

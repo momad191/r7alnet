@@ -7,14 +7,24 @@ import ss from './ss.png';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
+
+    <nav className='navbar bg-dark'>
+
+      <h1>
+        <Link to='/'>
+
+        <img src={ss} width="60px" height="40px" alt="logo"/>
+        </Link>
+      </h1>
+
     <ul>
 
        <li> 
-        <Link to='/addpost'> <i class="fas fa-plus"></i> Add Publication</Link>
+        <Link to='/addpost'> <i class="fas fa-plus"></i> Add publications</Link>
       </li>
 
       <li>
-        <Link to='/profiles'>Members</Link>
+        <Link to='/showMembers'>Members</Link>
       </li>
       <li>
         <Link to='/posts'>Publications</Link>
@@ -42,27 +52,41 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         </a>
       </li>
     </ul>
+
+    </nav>
   );
 
   const guestLinks = (
+
+    <nav className='navbar bg-dark'>
+
+      <h1>
+        <Link to='/'>
+        <img src={ss} width="60px" height="40px" alt="logo"/>
+        </Link>
+      </h1>
+
     <ul>
+
+      
+
       <li>
         <Link to='/'>Home</Link>
       </li>
-
+ 
       <li>
         <Link to='/questions'>Questions</Link>
       </li>
 
       <li>
-        <Link to='/profiles'>Members</Link>
+        <Link to='/showMembers'>Members</Link>
       </li>
 
       <li>
         <Link to='/posts'>Publications</Link>
       </li>
 
-       
+        
 
       <li>
         <Link to='/showLuminaries'>Luminaries</Link>
@@ -95,19 +119,17 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <Link to='/AllImages'>AllImages</Link>
       </li> */}
     </ul>
+
+    </nav>
   );
 
   return (
-    <nav className='navbar bg-dark'>
-      <h1>
-        <Link to='/'>
-        <img src={ss} width="60px" height="40px" alt="logo"/>
-        </Link>
-      </h1>
+    <Fragment>
+      
       {!loading && (
         <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
       )}
-    </nav>
+    </Fragment>
   );
 };
 

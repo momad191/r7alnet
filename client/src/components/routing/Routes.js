@@ -3,19 +3,33 @@ import { Route, Switch } from 'react-router-dom';
 import Register from '../auth/Register';
 import Login from '../auth/Login';
 import Alert from '../layout/Alert';
+import dashHome from '../layout/dashHome';
+
+
 import Dashboard from '../dashboard/Dashboard';
+import imgcontroll from '../dashboard/imgcontroll';
+// import ChartEx from '../pages/ChartEx';
+
+
+import cvcontroll from '../dashboard/cvcontroll';
 import CreateProfile from '../profile-forms/CreateProfile';
 import EditProfile from '../profile-forms/EditProfile';
+import EditProfileInfo from '../pages/EditProfileInfo';
+
+ 
 import AddExperience from '../profile-forms/AddExperience';
 import AddEducation from '../profile-forms/AddEducation';
 import Profiles from '../profiles/Profiles';
 import Profile from '../profile/Profile';
 import Posts from '../posts/Posts';
 import addpost from '../posts/PostForm';
-
-
+ 
+ 
+import addquestion from '../questions/PostForm';
 import questions from '../questions/Posts';
 import question from '../question/Post';
+
+
 
 import Post from '../post/Post';
 import NotFound from '../layout/NotFound';
@@ -28,6 +42,7 @@ import about from '../pages/about';
 import showcontact from '../pages/showContact';
 import webinars from '../pages/webinars';
 import Luminaries from '../pages/Luminaries';
+ 
 
 
 //import AddQuestion from '../pages/QuestionRegistration';
@@ -41,7 +56,12 @@ import EditLuminaries from '../pages/EditLuminaries';
 import EditLuminariesImg from '../pages/EditLuminariesImg';
 
 
+import Edituser from '../auth/Edituser';
 import EdituserImg from '../auth/EdituserImg';
+import Editusercv from '../auth/Editusercv';
+
+
+
 
 
 
@@ -62,6 +82,7 @@ import showLuminariesDtails from '../pages/showLuminariesDtails';
 import showLuminaries from '../pages/showLuminaries';
 import showMembers from '../pages/showMembers';
 import AllLuminaries from '../pages/AllLuminaries';
+import Allmembers from '../pages/Allmembers';
 
 import AllLContact from '../pages/AllLContact';
 import AllWebinars from '../pages/AllWebinars';
@@ -69,8 +90,16 @@ import AllWebinars from '../pages/AllWebinars';
 import searchContact from '../pages/searchContact';
 import searchWebinar from '../pages/searchWebinar';
 import searchLuminaries from '../pages/searchLuminaries';
-import searchPosts from '../posts/searchPosts';
-import searchQuestions from '../questions/searchQuestions';
+import searchMembersByCountry from '../pages/search-members-by-country';
+import searchMembersBySpecialty from '../pages/search-members-by-specialty';
+import searchMembersByName from '../pages/search-members-by-name';
+import searchMembersByWorkPlace from '../pages/search-members-by-work-place';
+import searchPostsByArticle from '../posts/search-posts-by-article';
+import searchPostsByJournal from '../posts/search-posts-by-journal';
+import searchPostsByName from '../posts/search-posts-by-name';
+import searchPostsByDate from '../posts/search-posts-by-date';
+import searchQuestionByTitle from '../questions/searchQuestionByTitle';
+import searchQuestionByTags from '../questions/searchQuestionByTags';
 
 
 
@@ -78,8 +107,27 @@ import searchQuestions from '../questions/searchQuestions';
 
 
 
-import AddImage from '../auth/AddImage';
-import AllImages from '../auth/AllImages';
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+ 
+// import searchPosts from '../posts/searchPosts';
+// import searchQuestions from '../questions/searchQuestions';
+
+
+// import AddImage from '../auth/AddImage';
+// import AllImages from '../auth/AllImages';
 
 
 
@@ -89,7 +137,7 @@ const Routes = () => {
       <Alert />
       <Switch>
 
-       <Route exact path='/reputations' component={reputations} />
+        <Route exact path='/reputations' component={reputations} />
         <Route exact path='/about' component={about} />
         <Route exact path='/showcontact' component={showcontact} />
         <Route exact path='/webinars' component={webinars} />
@@ -104,14 +152,22 @@ const Routes = () => {
         <PrivateRoute exact path='/EditLuminaries/:id' component={EditLuminaries} />
         <PrivateRoute exact path='/EditLuminariesImg/:id' component={EditLuminariesImg} />
         <PrivateRoute exact path='/EdituserImg/:id' component={EdituserImg} />
+        <PrivateRoute exact path='/Editusercv/:id' component={Editusercv} />
+        <PrivateRoute exact path='/Edituser/:id' component={Edituser} />
+        <PrivateRoute exact path='/EditProfileInfo/user/:id' component={EditProfileInfo} />
+
+        
+ 
+
+        
 
         <PrivateRoute exact path='/EditContact/:id' component={EditContact} />
 
         
 
         
-        <Route exact path='/AddImage' component={AddImage} />
-        <Route exact path='/AllImages' component={AllImages} />
+        {/* <Route exact path='/AddImage' component={AddImage} />
+        <Route exact path='/AllImages' component={AllImages} /> */}
         
         
         <Route exact path='/Contact' component={Contact} />
@@ -129,6 +185,9 @@ const Routes = () => {
          
 
         <PrivateRoute exact path='/AllLuminaries' component={AllLuminaries} />
+        <PrivateRoute exact path='/Allmembers' component={Allmembers} />
+
+        
         <PrivateRoute exact path='/AllWebinars' component={AllWebinars} />
         <PrivateRoute exact path='/AllLContact' component={AllLContact} />
         
@@ -137,9 +196,57 @@ const Routes = () => {
         <PrivateRoute exact path='/searchWebinar' component={searchWebinar} />
 
         
-        <PrivateRoute exact path='/searchQuestions' component={searchQuestions} />
-        <PrivateRoute exact path='/searchPosts' component={searchPosts} />
+        {/* <PrivateRoute exact path='/searchQuestions' component={searchQuestions} />
+        <PrivateRoute exact path='/searchPosts' component={searchPosts} /> */}
+
         <PrivateRoute exact path='/searchLuminaries' component={searchLuminaries} />
+
+        {/* ---------------------  Members Search  --------------------- */}
+        <PrivateRoute exact path='/searchMembersByCountry' component={searchMembersByCountry} />
+        <PrivateRoute exact path='/searchMembersBySpecialty' component={searchMembersBySpecialty} />
+        <PrivateRoute exact path='/searchMembersByName' component={searchMembersByName} />
+        <PrivateRoute exact path='/searchMembersByWorkPlace' component={searchMembersByWorkPlace} />
+        <PrivateRoute exact path='/searchPostsByArticle' component={searchPostsByArticle} />
+        <PrivateRoute exact path='/searchPostsByJournal' component={searchPostsByJournal} />
+        <PrivateRoute exact path='/searchPostsByName' component={searchPostsByName} />
+        <PrivateRoute exact path='/searchPostsByDate' component={searchPostsByDate} />
+        <PrivateRoute exact path='/searchQuestionByTitle' component={searchQuestionByTitle} />
+        <PrivateRoute exact path='/searchQuestionByTags' component={searchQuestionByTags} />
+        <PrivateRoute exact path='/dashHome' component={dashHome} />
+
+        
+
+        
+
+
+
+ 
+        
+
+
+        
+ 
+
+
+
+
+        
+
+        
+
+
+        
+
+
+        
+
+  
+        
+
+
+        
+
+        
 
         
   
@@ -148,16 +255,30 @@ const Routes = () => {
         <PrivateRoute exact path='/list' component={list} />
 
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
+        <PrivateRoute exact path='/imgcontroll' component={imgcontroll} />
+        {/* <PrivateRoute exact path='/ChartEx' component={ChartEx} /> */}
+
+        
+        <PrivateRoute exact path='/cvcontroll' component={cvcontroll} />
+
+        
+ 
+        
         <PrivateRoute exact path='/create-profile' component={CreateProfile} />
         <PrivateRoute exact path='/edit-profile' component={EditProfile} />
+       
+
+        
         <PrivateRoute exact path='/add-experience' component={AddExperience} />
         <PrivateRoute exact path='/add-education' component={AddEducation} />
 
         
+
+        <PrivateRoute exact path='/addquestion' component={addquestion} />
         <PrivateRoute exact path='/questions' component={questions} />
         <PrivateRoute exact path='/question/:id' component={question} />
          
-        
+         
 
         
         <PrivateRoute exact path='/addpost' component={addpost} />

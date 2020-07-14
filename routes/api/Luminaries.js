@@ -31,7 +31,7 @@ var upload = multer({
 // User model
 let Luminaries = require('../../models/Luminaries');
  
- 
+  
 router.get('/', auth, async (req, res) => {
     try {
       const luminaries = await Luminaries.find().sort({ L_date: -1 });
@@ -59,7 +59,9 @@ router.get('/', auth, async (req, res) => {
 
 router.post('/', upload.single('L_Img'), (req, res, next) => {
     //const url = req.protocol + '://' + req.get('host')
+    //const url = 'https://s-rf-heroku.herokuapp.com'
     const url = 'https://s-rf-heroku.herokuapp.com'
+    
     const luminaries = new Luminaries({
  
         _id: new mongoose.Types.ObjectId(),
@@ -103,7 +105,7 @@ router.route('/:id').delete((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-
+ 
 
 router.route('/:id').get((req, res) => {
     Luminaries.findById(req.params.id)
@@ -118,6 +120,7 @@ router.route('/:id').get((req, res) => {
   
 router.route('/EditLuminariesImg/:id').post(upload.single('L_Img'),(req, res) => {
   //const url = req.protocol + '://' + req.get('host')
+  //const url = 'https://s-rf-heroku.herokuapp.com'
   const url = 'https://s-rf-heroku.herokuapp.com'
   Luminaries.findById(req.params.id)
     .then(luminaries => {
@@ -136,7 +139,7 @@ router.route('/EditLuminariesImg/:id').post(upload.single('L_Img'),(req, res) =>
 //************************************************************************ */
 
 
-
+ 
 
 router.route('/update/:id').post((req, res) => {
     Luminaries.findById(req.params.id)
@@ -156,7 +159,7 @@ router.route('/update/:id').post((req, res) => {
       })
       .catch(err => res.status(400).json('Error: ' + err));
   });
-
+ 
 
 
 module.exports = router;

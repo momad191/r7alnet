@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import axios from 'axios';
 //import './App.css';
-
+ 
 const thStyle =
     {
          background:'#cacaca',
@@ -144,7 +144,16 @@ handlePageClick = (e) => {
 
   exerciseList() {
     return this.state.exercises
-    .filter(Luminaries => Luminaries.name.includes(this.state.search))
+
+    
+    // .filter(Luminaries => Luminaries.name.includes(this.state.search))
+
+    .filter(luminaries=>{
+
+      return luminaries.name.toLowerCase().indexOf(this.state.search.toLowerCase())>=0
+    })
+
+
     .map(currentexercise => {
       return <Exercise exercise={currentexercise} deleteExercise={this.deleteExercise} key={currentexercise._id}/>;
     })

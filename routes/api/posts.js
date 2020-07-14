@@ -15,7 +15,7 @@ router.post(
   [
     auth,
     [
-      check('text', 'Text is required')
+      check('title_article', 'Text is required')
         .not()
         .isEmpty()
     ]
@@ -28,46 +28,48 @@ router.post(
 
     try {
       const user = await User.findById(req.user.id).select('-password');
-
+ 
       const newPost = new Post({
-        text: req.body.text,
-
-        book: req.body.book,
-        booklet: req.body.booklet,
-        inbook: req.body.inbook,
-        incollection: req.body.incollection,
-        inproceedings: req.body.inproceedings,
-        manual: req.body.manual,
-        mastersthesis: req.body.mastersthesis,
-        misc: req.body.misc,
-        phdthesis: req.body.phdthesis,
-        proceedings: req.body.proceedings,
-        techreport: req.body.techreport,
-        unpublished: req.body.unpublished,
-        address: req.body.address,
-        annote: req.body.annote,
-        author: req.body.author,
-        booktitle: req.body.booktitle,
-        chapter: req.body.chapter,
-        crossref: req.body.crossref,
-        edition: req.body.edition,
-        editor: req.body.editor,
-        howpublished: req.body.howpublished,
-        institution: req.body.institution,
-        journal: req.body.journal,
-        key: req.body.key,
-        month: req.body.month,
-        note: req.body.note,
-        number: req.body.number,
-        organization: req.body.organization,
-        pages: req.body.pages,
-        publisher: req.body.publisher,
-        school: req.body.school,
-        series: req.body.series,
-        title: req.body.title,
-        type: req.body.type,
-        volume: req.body.volume,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
         year: req.body.year,
+        title_article: req.body.title_article,
+        title_journal: req.body.title_journal,
+        volume: req.body.volume,
+        pages: req.body.pages,
+        DOI: req.body.DOI,
+        ISSN: req.body.ISSN,
+
+
+
+        // phdthesis: req.body.phdthesis,
+        // proceedings: req.body.proceedings,
+        // techreport: req.body.techreport,
+        // unpublished: req.body.unpublished,
+        // address: req.body.address,
+        // annote: req.body.annote,
+        // author: req.body.author,
+        // booktitle: req.body.booktitle,
+        // chapter: req.body.chapter,
+        // crossref: req.body.crossref,
+        // edition: req.body.edition,
+        // editor: req.body.editor,
+        // howpublished: req.body.howpublished,
+        // institution: req.body.institution,
+        // journal: req.body.journal,
+        // key: req.body.key,
+        // month: req.body.month,
+        // note: req.body.note,
+        // number: req.body.number,
+        // organization: req.body.organization,
+        // pages: req.body.pages,
+        // publisher: req.body.publisher,
+        // school: req.body.school,
+        // series: req.body.series,
+        // title: req.body.title,
+        // type: req.body.type,
+        // volume: req.body.volume,
+        // year: req.body.year,
 
         
         name: user.name,

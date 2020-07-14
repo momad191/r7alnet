@@ -34,7 +34,7 @@ export const getProfiles = () => async dispatch => {
 
   try {
     const res = await axios.get('/api/profile');
-
+ 
     dispatch({
       type: GET_PROFILES,
       payload: res.data
@@ -85,6 +85,7 @@ export const getGithubRepos = username => async dispatch => {
 export const createProfile = (
   formData,
   history,
+   user ,
   edit = false
 ) => async dispatch => {
   try {
@@ -100,11 +101,12 @@ export const createProfile = (
       type: GET_PROFILE,
       payload: res.data
     });
-
+ 
     dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success'));
-
+ 
     if (!edit) {
-      history.push('/dashboard');
+      history.push('/imgcontroll');
+    
     }
   } catch (err) {
     const errors = err.response.data.errors;

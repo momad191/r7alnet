@@ -19,7 +19,7 @@ const DashboardActions = () => {
          
       <Link to="/AllWebinars" title="Dashboard" className='btn-momadlist'><i className="fas fa-square text-primary"></i> <span className="hide-sm"> Webinars</span></Link>
       <Link to="/AllLuminaries" title="Dashboard" className='btn-momadlist'><i className="fas fa-square text-primary"></i> <span className="hide-sm"> Luminaries</span></Link>
-      <Link to="/Profiles" title="Dashboard" className='btn-momadlist'><i className="fas fa-square text-primary"></i> <span className="hide-sm"> Members</span></Link>
+      <Link to="/Allmembers" title="Dashboard" className='btn-momadlist'><i className="fas fa-square text-primary"></i> <span className="hide-sm"> Members</span></Link>
       <Link to="/AllLContact" title="Dashboard" className='btn-momadlist'><i className="fas fa-square text-primary"></i> <span className="hide-sm">Contact</span></Link>
       <Link to="/questions" title="Dashboard" className='btn-momadlist'><i className="fas fa-square text-primary"></i> <span className="hide-sm">Questions</span></Link>
       <Link to="/posts" title="Dashboard" className='btn-momadlist'><i className="fas fa-square text-primary"></i> <span className="hide-sm">Posts</span></Link>

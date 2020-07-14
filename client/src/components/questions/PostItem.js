@@ -6,13 +6,13 @@ import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../actions/QuestionAction';
 import ConfirmButton from "./ConfirmButton";
 import "./styles.css";
-  
+   
 const PostItem = ({
   addLike,
   removeLike,
   deletePost,
   auth,
-  post: { _id, text, name, avatar, user, likes, comments, date },
+  post: { _id, text, body ,tags,formul, name, avatar, user, likes, comments, date },
   showActions
 }) => (
   <div className='post bg-white p-1 my-1'>
@@ -23,12 +23,41 @@ const PostItem = ({
       </Link>
     </div>
     <div>
-    <Link to={`/question/${_id}`} >
-      <p className='my-1'>{text}</p>
+
+
+    <Link to={`/question/${_id}`} >  
+      <p style={{color:"#000",fontSize:"19px" ,fontWeight:'bold'}} className='my-1'>
+        <span style={{color:"#0D33B6",fontSize:"15px" ,fontWeight:'bold'}}>Question Title:</span>{text}</p>
       </Link>
-      <p className='post-date'>
+
+
+      <Link to={`/question/${_id}`} >  
+      <p style={{color:"#000",fontSize:"19px" ,fontWeight:'bold'}} className='my-1'>
+        <span style={{color:"#0D33B6",fontSize:"15px" ,fontWeight:'bold'}}>Question Body:</span>{body}</p>
+      </Link>
+
+ 
+      
+      
+
+
+      <Fragment>
+      <p style={{color:"#000",fontSize:"19px" ,fontWeight:'bold'}} className='my-1'>
+      <span style={{color:"#0D33B6",fontSize:"15px",fontWeight:'bold'}}>Tags:</span>{tags} &nbsp;&nbsp; 
+      </p>
+
+      {/* <p style={{color:"#000",fontSize:"19px" ,fontWeight:'bold'}} className='my-1'>
+      <span style={{color:"#0D33B6",fontSize:"15px",fontWeight:'bold'}}>formul:</span>{formul} &nbsp;&nbsp;
+      </p> */}
+
+
+        </Fragment>
+
+        <p  style={{ color:"#000" , fontSize:"13px", fontWeight:'bold'}} className='post-date'>
         Asked at <Moment format='YYYY/MM/DD'>{date}</Moment>
       </p>
+
+
 
       {showActions && (
         <Fragment>

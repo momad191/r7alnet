@@ -1014,4 +1014,55 @@ font-size:13px;
     .sidenav a {font-size: 18px;}
   }
   
+/* ------------------------------------------------------------------------------ */
+  .skill{
+    background: #ffffff;
+    border: 1px solid #d6d6d6;
+    border-radius: 2px;
+  }
+  
+  .skill input{
+    border: none;
+    width: 100%;
+    min-width: 50px;
+  }
+  .skill input:focus{
+    outline: none;
+  }
+  
+  .hul{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .hul li{
+    align-items: center;
+    background: #778ca3;
+    border-radius: 2px;
+    color: #ffffff;
+    list-style: none;
+    margin: 5px;
+    padding: 5px;
+  }
+  .hul li button{
+    align-items: center;
+    background: #333333;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    font-size: 12px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    margin-left: 8px;
+    transform: rotate(45deg);
+  }
+  .hul .input-skill{
+    background: none;
+    flex-grow: 1;
+  }
   

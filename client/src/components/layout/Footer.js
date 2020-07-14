@@ -10,10 +10,10 @@
 					<li> Concept and Vision By: Hisham Musa | Designed and Developed by: Mohammed Emad</li>
 					</ul> 
 					<ul>
-					<Link to="https://www.facebook.com/sudanSRI/" className="fa fa-facebook"></Link >
-					<Link  to="https://twitter.com/SudanResearcher" className="fa fa-twitter"></Link >
-					<Link  to="https://www.youtube.com/channel/UCILMurMqj9alaqP7h6Q_K1A" className="fa fa-youtube"></Link>
-					<Link  to="https://plus.google.com/u/1/+SudaneseResearchersFoundation" className="fa fa-google"></Link >
+					<a href="https://www.facebook.com/sudanSRI/" className="fa fa-facebook"></a >
+					<a href="https://twitter.com/SudanResearcher" className="fa fa-twitter"></a >
+					<a href="https://www.youtube.com/channel/UCILMurMqj9alaqP7h6Q_K1A" className="fa fa-youtube"></a>
+					<a href="https://plus.google.com/u/1/+SudaneseResearchersFoundation" className="fa fa-google"></a >
 				</ul>
    				 </div>
 		 
