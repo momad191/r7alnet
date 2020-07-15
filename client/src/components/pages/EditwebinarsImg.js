@@ -231,7 +231,7 @@ export default class Editwebinars extends Component {
     formData.append('WebinarImg', this.state.WebinarImg);
 
     //this.props.addWebinars(formData);
-   axios.post('https://s-rf-heroku.herokuapp.com/api/webinars/EditwebinarsImg/' + this.props.match.params.id, formData)
+   axios.post('http://localhost:5000/api/webinars/EditwebinarsImg/' + this.props.match.params.id, formData)
    .then(res => console.log(res.data));
    window.location = '/AllWebinars';
      
