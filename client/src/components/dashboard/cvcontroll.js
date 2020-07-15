@@ -6,8 +6,6 @@ import Spinner from '../layout/Spinner';
 import ccv from './ccv.png';
 //import DashboardActions from './DashboardActions';
 
- 
- 
 //import Experience from './Experience';
 //import Education from './Education';
 //import Sidebar from './Sidebar';

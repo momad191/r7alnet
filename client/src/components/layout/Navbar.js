@@ -19,9 +19,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
     <ul>
 
-       <li> 
+       {/* <li> 
         <Link to='/addpost'> <i class="fas fa-plus"></i> Add publications</Link>
-      </li>
+      </li> */}
 
       <li>
         <Link to='/showMembers'>Members</Link>
@@ -30,9 +30,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <Link to='/posts'>Publications</Link>
       </li>
  
-      <li>
+      {/* <li>
         <Link to='/questions'>Questions</Link>
-      </li>
+      </li> */}
 
       <li>
         <Link to='/dashboard'>
