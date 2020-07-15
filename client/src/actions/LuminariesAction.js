@@ -1,7 +1,7 @@
 import { ADD_Luminaries,GET_Luminaries, GET_ERRORS,EDIT_Luminaries } from './types';
 import axios from 'axios';
 import { setAlert } from './alert';
-
+ 
     
 //ADD Luminaries
 export const addLuminaries = formData => async dispatch => {
