@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Moment from 'react-moment';
 //import './App.css';
- 
+  
 const thStyle =
     {
          background:'#cacaca',
@@ -13,7 +13,7 @@ const thStyle =
          textalign:'center',
          border: '1px solid #000'
      }
-
+ 
      const tdStyle = {
       background:'#FAFAFA',
       verticalAlign: 'middle',
@@ -23,10 +23,8 @@ const thStyle =
       border: '0.2px solid #000',
       //border: "0.5px solid #000"
 
-      
-      
-
      }
+
 
      const activetdStyle = {
       background:'#28a745',
@@ -38,7 +36,6 @@ const thStyle =
 
      }
 
- 
      const inputTextStyle ={
       display: 'block',
       width: '60%',
@@ -59,21 +56,21 @@ const Exercise = props => (
    <tr>
      
     <td style={tdStyle}><Link to={"/EdituserImg/"+props.exercise.user._id}><img src={props.exercise.user.avatar} width='100' height='55' alt="" /></Link></td>
-    <td style={tdStyle}>{props.exercise.user.name}</td>
-    <td style={activetdStyle}>{props.exercise.location}</td>
+    <td style={activetdStyle}>{props.exercise.user.name}</td>
+    <td style={tdStyle}>{props.exercise.location}</td>
     <td style={tdStyle}>{props.exercise.department}</td>
     <td style={tdStyle}>{props.exercise.company}</td>
     <td style={tdStyle}><Moment format='YYYY/MM/DD'>{props.exercise.date}</Moment></td>
    
+      
      
      
-     
-    <td  style={tdStyle}>
-        <Link to={"/Edituser/"+props.exercise.user._id} className="hide-sm text-dark">Update Name and Email </Link>  
+    <td style={tdStyle}>
+        <Link to={"/Edituser/"+props.exercise.user._id} className="hide-sm text-dark">Update name and Email </Link>  
       </td>
 
       <td style={tdStyle}>
-        <Link to={"/EditProfileInfo/user/"+props.exercise._id} className="hide-sm text-dark">Update Profile </Link>  
+        <Link to={"/EditProfileInfo/user/"+props.exercise._id} className="hide-sm text-dark">Update profile </Link>  
       </td>
 
       <td style={tdStyle}>
@@ -156,7 +153,7 @@ handlePageClick = (e) => {
 
     .filter(profile=>{
 
-      return profile.location.toLowerCase().indexOf(this.state.search.toLowerCase())>=0
+      return profile.user.name.toLowerCase().indexOf(this.state.search.toLowerCase())>=0
 
     })
 
@@ -166,7 +163,7 @@ handlePageClick = (e) => {
 
   }
 
-
+ 
 
 
 
@@ -178,19 +175,19 @@ handlePageClick = (e) => {
     
     return ( 
       <div>
-         
-        <h1>Search By Country </h1>
+        
+        <h1>Search By Name </h1>
         {/* <Link to="/LuminariesRegistration" title="Dashboard" className=''><i className="fas fa-plus text-primary"></i> <span className="hide-sm">Add </span></Link> <br/> */}
 
         {/* <Link to="/Search" title="Dashboard" className=''><i className="fas fa-search text-primary"></i> <span className="hide-sm">Search </span></Link> */}
 
-        <Link to="/searchMembersByCountry" title="Dashboard" className=''><i className="fas fa-search text-primary"></i> <span className="hide-sm text-success">By Country </span></Link>--
+        {/* <Link to="/searchMembersByCountry" title="Dashboard" className=''><i className="fas fa-search text-primary"></i> <span className="hide-sm text-dark">By Country </span></Link>-- */}
         <Link to="/searchMembersBySpecialty" title="Dashboard" className=''><i className="fas fa-search text-primary"></i> <span className="hide-sm text-dark">By Specialization </span></Link>--
-        <Link to="/searchMembersByName" title="Dashboard" className=''><i className="fas fa-search text-primary"></i> <span className="hide-sm text-dark">By Name </span></Link>--
+        <Link to="/searchMembersByName" title="Dashboard" className=''><i className="fas fa-search text-primary"></i> <span className="hide-sm text-success">By Name </span></Link>--
         <Link to="/searchMembersByWorkPlace" title="Dashboard" className=''><i className="fas fa-search text-primary"></i> <span className="hide-sm text-dark">By Work Place </span></Link>
  
- 
-        <input  style={inputTextStyle} type='text' placeholder="Type The Country" onChange={this.searchChanged} value={this.state.search}/>
+
+        <input  style={inputTextStyle} type='text' placeholder="Type The Name" onChange={this.searchChanged} value={this.state.search}/>
 
         <div className="table-responsive">
         <table  style={{ width:"100%", fontSize:"13px" }}>

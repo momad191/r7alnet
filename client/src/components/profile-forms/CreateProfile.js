@@ -70,7 +70,7 @@ const CreateProfile = ({
 			<small>* = required field</small>
 			<form className='form' onSubmit={e => onSubmit(e)}>
 				<div className='form-group'>
-					<select name='status' value={status} onChange={e => onChange(e)}>
+					<select name='status' value={status} onChange={e => onChange(e)} required>
 
 						<option value='0'>* Select Professional Status</option>
 						<option value="Graduate student">Graduate student</option>
@@ -146,6 +146,7 @@ const CreateProfile = ({
 						name='department'
 						value={department}
 						onChange={e => onChange(e)}
+						required
 					/>
 					<small className='form-text'>
 					your  specialization
@@ -409,7 +410,7 @@ const CreateProfile = ({
    <option value="Uganda">Uganda</option>
    <option value="United Kingdom">United Kingdom</option>
    <option value="Ukraine">Ukraine</option>
-   <option value="United Arab Erimates">United Arab Emirates</option>
+   <option value="United Arab Erimates">United Arab Erimates</option>
    <option value="United States of America">United States of America</option>
    <option value="Uraguay">Uruguay</option>
    <option value="Uzbekistan">Uzbekistan</option>
@@ -457,6 +458,7 @@ const CreateProfile = ({
 						name='skills'
 						value={skills}
 						onChange={e => onChange(e)}
+						required
 					/>
 					<small className='form-text'>
 					Please use comma separated values (eg. Reading,Writing,Swimming,Football)
@@ -486,6 +488,7 @@ const CreateProfile = ({
 						name='bio'
 						value={bio}
 						onChange={e => onChange(e)}
+						required
 					/>
 					<small className='form-text'>Tell us a little about yourself</small>
 				</div>

@@ -10,10 +10,11 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     name: '',
     email: '',
     password: '',
-    password2: ''
+    password2: '',
+    validity:'',
   });
 
-  const { name, email, password, password2 } = formData;
+  const { validity,name, email, password, password2  } = formData;
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,7 +24,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     if (password !== password2) {
       setAlert('Passwords do not match', 'danger');
     } else {
-      register({ name, email, password });
+      register({ name, email, password, validity });
     }
   };
 
@@ -83,6 +84,19 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             onChange={e => onChange(e)}
           />
         </div>
+        <div className='form-group'>
+          <input
+           style={{width:'50%'}}
+            type='hidden'
+            placeholder='validity'
+            name='validity'
+            value={validity}
+            onChange={e => onChange(e)}
+            
+          />
+        </div>
+
+        
         <input type='submit' className='btn btn-primary' value='Register' />
       </form>
       <p className='my-1'>

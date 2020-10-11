@@ -25,7 +25,7 @@ import { ADD_CONTACT, GET_ERRORS } from './types';
 // };
 
 // Register User
-export const register = ({ name, email, channel , subject , msg }) => async dispatch => {
+export const register = ({ name, email, channel , subject , msg, history }) => async dispatch => {
   const config = {
     headers: {
       'Content-Type': 'application/json'
@@ -41,10 +41,10 @@ export const register = ({ name, email, channel , subject , msg }) => async disp
       type: ADD_CONTACT,
       payload: res.data
     });
- 
+  
     dispatch(setAlert('MSG Sent Sucsessfuly ', 'success'));
 
-  
+    history.push('/');
    // dispatch(loadUser());
   } catch (err) {
     dispatch({
@@ -53,7 +53,7 @@ export const register = ({ name, email, channel , subject , msg }) => async disp
     });
   }
 
-  window.location = '/AllLContact';
+  
 };
 
 //  Login User

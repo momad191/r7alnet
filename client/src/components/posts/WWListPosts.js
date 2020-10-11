@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../actions/QuestionAction';
 import PostItem from './PostItem';
 // const thStyle =
-//     {
+//     { 
 //          background:'#cacaca',
 //          verticalalign: 'middle',
 //          fontweight: '600',
@@ -49,7 +49,7 @@ const Posts = ({ posts, loading ,
     return <h2>Loading...</h2>;
   }
 
-  
+   
  
   return (
   
@@ -57,10 +57,11 @@ const Posts = ({ posts, loading ,
     {posts
     
     .map(post => (
+      
         <PostItem key={post._id} post={post} />
      
     ))}
-    
+     
  
   </div>
  

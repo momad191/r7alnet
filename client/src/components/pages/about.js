@@ -21,7 +21,8 @@ const about = () => {
                <button className="accordion"> Rationale </button>
                <div >
                      <p className="my-1">
-                     SRF addresses the absence of dedicated Sudanese platforms focusing on capacity building, knowledge sharing and research dissemination in a blended continuous education model. In this context we provide a common platform for interaction between Sudanese learners and researchers to establish and drive the momentum of research and education in Sudan. SRF serves as a bridge to link Sudanese undergraduates & postgraduates with the expertise and competence of Sudanese researchers worldwide.
+                     Sudanese Researchers Foundation (SRF) addresses the absence of dedicated Sudanese platforms focused on capacity building, knowledge sharing and research dissemination in a blended education model.
+ The SRF is a Sudanese NGO focusing on advancing scientific research in Sudan and increasing the capacity of Sudanese researchers. It was founded in 2009 by Dr. Anwar Dafalla (Assistant Professor of Computer Science) and by September 2020 has a reached a member base of more than half a million users in the official Facebook group: <a href="https://www.facebook.com/groups/SudanResearch.net/"> https://www.facebook.com/groups/SudanResearch.net/</a> . At the SRF, and through its online platforms, several activities have been conducted such as hosting webinars (including some with Noble laureates), workshops, conferences and symposiums in Sudan, dissemination of information about studying aboard for Sudanese youth, partnerships with local universities and training centers, and many more activities.
                      </p> 
                </div>
                

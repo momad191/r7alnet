@@ -28,10 +28,10 @@ export const addWebinars = formData => async dispatch => {
       });
     }
 
-    window.location = '/AllWebinars';
+    window.location = '/showWebinars';
   };
 
-
+ 
 
   // Get posts
 export const getAllWebinars = () => async dispatch => {

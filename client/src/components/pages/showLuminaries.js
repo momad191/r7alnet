@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Posts from './WWListLuminariesForShow';
 import Pagination from './Pagination';
 import axios from 'axios';
-
+  
 import './App.css';
-
+  
 const ListMy = () => {
 
   const [posts, setPosts] = useState([]);

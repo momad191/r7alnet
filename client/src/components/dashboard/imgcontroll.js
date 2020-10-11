@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
@@ -52,6 +53,11 @@ const Dashboard = ({
       </td>
       </tr>
       </table>   
+
+
+      <Link to='/' className='btn btn-dark'>
+          Go to dashboard
+          </Link>
  
         </Fragment>
       ) : (

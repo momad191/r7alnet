@@ -48,10 +48,10 @@ const Posts = ({ posts, loading}) => {
     <Link to={"/profile/"+pd.user._id}> <img src={pd.user.avatar} alt="" style={{width:'200px', height:'150px'}} /></Link>
     <h1 style={{fontSize:'13px' , fontWeight:'Bold', color:'#000'}}>{pd.user.name}</h1>
     <h1 style={{fontSize:'15px' , fontWeight:'Bold', color:'#000'}}> Level1</h1>
-     <h1 style={{fontSize:'13px' , fontWeight:'Bold', color:'#000'}}> location: {pd.location}</h1>
-     <p style={{fontSize:'13px' , fontWeight:'Bold', color:'#000'}}> Member Since: <Moment format='YYYY/MM/DD'>{pd.date}</Moment> </p>
+     <h1 style={{fontSize:'13px' , fontWeight:'Bold', color:'#000', height:'60px'}}> location: {pd.location}</h1>
+     {/* <p style={{fontSize:'13px' , fontWeight:'Bold', color:'#000'}}> Member Since: <Moment format='YYYY/MM/DD'>{pd.user.date}</Moment> </p> */}
      <div>
-     
+      
       
      {/* <Link className="Link-card" href={pd.youtube}><i className="fa fa-youtube"></i></Link> 
      <Link className="Link-card" href={pd.twitter}><i className="fa fa-twitter"></i></Link>  

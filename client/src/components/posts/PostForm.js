@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/post';
-   
+     
 const PostForm = ({ addPost }) => {
   const [formData, setFormData] = useState({
-
-            first_name:'',
-            last_name:'',
-            year:'',
-            title_article:'',
-            title_journal:'',
-            volume:'',
-            pages:'',
-            DOI:'',
-            ISSN:''
+ 
+    first_name:'',
+    last_name:'',
+    year:'',
+    title_article:'',
+    title_journal:'',
+    volume:'',
+    pages:'',
+    DOI:'',
+    ISSN:'',
+    URL:''
             // phdthesis:'', 
             // proceedings:'',
             // techreport:'',
@@ -47,15 +48,17 @@ const PostForm = ({ addPost }) => {
 
             const {
               
-            first_name,
-            last_name,
-            year,
-            title_article,
-            title_journal,
-            volume,
-            pages,
-            DOI,
-            ISSN
+              first_name,
+              last_name,
+              year,
+              title_article,
+              title_journal,
+              volume,
+              pages,
+              DOI,
+              ISSN,
+              URL,
+            
 
             // phdthesis,
             // proceedings, 
@@ -95,7 +98,7 @@ const PostForm = ({ addPost }) => {
            const onSubmit = async e => {
             e.preventDefault();
             addPost({ 
-
+ 
               first_name,
               last_name,
               year,
@@ -104,7 +107,9 @@ const PostForm = ({ addPost }) => {
               volume,
               pages,
               DOI,
-              ISSN
+              ISSN,
+              URL,
+              
   
 
             // phdthesis,
@@ -202,6 +207,15 @@ const PostForm = ({ addPost }) => {
               </tr>
 
 
+              <tr>
+              <td colSpan='3'>
+                <label>URL</label>
+                <input  placeholder="" type="text"  name='URL'  value={URL}    onChange={e => onChange(e)}  required />
+
+                </td>
+              </tr>
+
+
             
             <tr>
 
@@ -251,3 +265,4 @@ export default connect(
   null,
   { addPost }
 )(PostForm);
+ 

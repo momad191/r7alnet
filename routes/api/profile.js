@@ -4,11 +4,10 @@ const config = require('config');
 const router = express.Router();
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator/check');
- 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const Post = require('../../models/Post');
-
+ 
 // @route    GET api/profile/me
 // @desc     Get current users profile
 // @access   Private
@@ -479,6 +478,108 @@ router.get('/github/:username', (req, res) => {
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
+  }
+});
+
+
+
+
+// @route    PUT api/profile/spost
+// @desc     Add profile spost
+// @access   Private
+router.put(
+  '/spost',
+  [
+    auth,
+    [
+      check('first_name', 'name is required')
+        .not()
+        .isEmpty(),
+      check('title_article', 'article title  is required')
+        .not()
+        .isEmpty(),
+      check('title_journal', 'journal title  is required')
+        .not()
+        .isEmpty(),
+      check('URL', 'URL is required')
+        .not()
+        .isEmpty()
+    ]
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    const {
+      first_name,
+      last_name,
+      year,
+      title_article,
+      title_journal,
+      volume,
+      pages,
+      DOI,
+      ISSN,
+      URL
+    } = req.body;
+
+    const newEdu = {
+      first_name,
+      last_name,
+      year,
+      title_article,
+      title_journal,
+      volume,
+      pages,
+      DOI,
+      ISSN,
+      URL
+    };
+
+    try {
+      const profile = await Profile.findOne({ user: req.user.id });
+
+      profile.spost.unshift(newEdu);
+
+      await profile.save();
+
+      res.json(profile);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
+
+
+
+router.delete("/spost/:edu_id", auth, async (req, res) => {
+  try {
+    const foundProfile = await Profile.findOne({ user: req.user.id });
+    const eduIds = foundProfile.spost.map(edu => edu._id.toString());
+    // if i dont add .toString() it returns this weird mongoose coreArray and the ids are somehow objects and it still deletes anyway even if you put /education/5
+    const removeIndex = eduIds.indexOf(req.params.edu_id);
+    if (removeIndex === -1) {
+      return res.status(500).json({ msg: "Server error" });
+    } else {
+      // theses console logs helped me figure it out
+      /*   console.log("eduIds", eduIds);
+      console.log("typeof eduIds", typeof eduIds);
+      console.log("req.params", req.params);
+      console.log("removed", eduIds.indexOf(req.params.edu_id));
+ */ foundProfile.spost.splice(
+        removeIndex,
+        1,
+      );
+      await foundProfile.save();
+      return res.status(200).json(foundProfile);
+    }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ msg: "Server error" });
   }
 });
 

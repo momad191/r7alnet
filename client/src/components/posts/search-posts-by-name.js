@@ -75,6 +75,14 @@ const Exercise = props => (
       <p style={{color:"#000",fontSize:"19px" ,fontWeight:'bold'}} className='my-1'>
         <span style={{color:"#0D33B6",fontSize:"15px",fontWeight:'bold'}}>Journal Title:</span>{props.exercise.title_journal}</p>
       </Link>
+
+
+      <a href={props.exercise.URL} >
+      {/* <p style={{color:"#000",fontSize:"19px" ,fontWeight:'bold'}} className='my-1'>
+      <span style={{color:"#0D33B6",fontSize:"15px",fontWeight:'bold'}}>URL:</span>{URL}</p> */}
+      <p style={{color:"#000",fontSize:"19px" ,fontWeight:'bold'}} className='my-1'>
+      <span style={{color:"#0D33B6",fontSize:"15px",fontWeight:'bold'}}>URL:</span>Link</p>
+      </a>
  
       <Fragment>
       <p style={{color:"#000",fontSize:"19px" ,fontWeight:'bold'}} className='my-1'>

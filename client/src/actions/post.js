@@ -28,6 +28,10 @@ export const getPosts = () => async dispatch => {
   }
 };
 
+  
+ 
+
+
 // Add like
 export const addLike = id => async dispatch => {
   try {
@@ -89,7 +93,7 @@ export const addPost = formData => async dispatch => {
       'Content-Type': 'application/json'
     }
   };
-
+ 
   try {
     const res = await axios.post('/api/posts', formData, config);
 
@@ -166,6 +170,24 @@ export const deleteComment = (postId, commentId) => async dispatch => {
     });
 
     dispatch(setAlert('Comment Removed', 'success'));
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+
+// Get post for one user 
+export const getPostUser = () => async dispatch => {
+  try {
+    const res = await axios.get('/api/posts/upee');
+ 
+    dispatch({
+      type: GET_POSTS,
+      payload: res.data
+    });
   } catch (err) {
     dispatch({
       type: POST_ERROR,

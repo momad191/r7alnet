@@ -7,9 +7,10 @@ import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
+import ProfileSpost from './ProfileSpost';
 //import ProfileGithub from './ProfileGithub';
 import { getProfileById } from '../../actions/profile';
-
+     
 const Profile = ({
   getProfileById,
   profile: { profile, loading },
@@ -26,7 +27,7 @@ const Profile = ({
         <Spinner />
       ) : (
         <Fragment>
-          <Link to='/profiles' className='btn btn-light'>
+          <Link to='/showMembers' className='btn btn-light'>
             Back To Profiles
           </Link>
           {auth.isAuthenticated &&
@@ -35,7 +36,19 @@ const Profile = ({
               <Link to='/edit-profile' className='btn btn-dark'>
                 Edit Profile
               </Link>
-            )}
+            )} 
+
+        {auth.isAuthenticated &&
+            auth.loading === false &&
+            auth.user._id === profile.user._id && (
+              <Link to='/dashboard' className='btn btn-dark'>Dashboard</Link>
+
+            )} 
+
+
+
+
+
           <div className='profile-grid my-1'>
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />
@@ -54,7 +67,7 @@ const Profile = ({
                 <h4>No experience credentials</h4>
               )}
             </div>
-
+ 
             <div className='profile-edu bg-white p-2'>
               <h2 className='text-primary'>Education</h2>
               {profile.education.length > 0 ? (
@@ -71,11 +84,34 @@ const Profile = ({
               )}
             </div>
 
+
+
+
             {/* {profile.githubusername && (
               <ProfileGithub username={profile.githubusername} />
             )} */}
 
+
+      
+
           </div>
+
+          <div className='profile-edu bg-white p-2'>
+              <h2 className='text-primary'>Publications</h2>
+              {profile.spost.length > 0 ? (
+                <Fragment>
+                  {profile.spost.map(spost => (
+                    <ProfileSpost
+                      key={spost._id}
+                      spost={spost}
+                    />
+                  ))}
+                </Fragment>
+              ) : (
+                <h4>No publications credentials</h4>
+              )}
+            </div>
+            
         </Fragment>
       )}
     </Fragment>

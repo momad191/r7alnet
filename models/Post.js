@@ -6,7 +6,7 @@ const PostSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'users'
   }, 
-    
+       
   first_name: {
     type: String
   },
@@ -23,6 +23,7 @@ const PostSchema = new Schema({
   title_journal: {
     type: String
   },
+  
   volume: {
     type: String
   },
@@ -35,8 +36,11 @@ const PostSchema = new Schema({
   ISSN: {
     type: String
   },
-
-
+  URL: {
+    type: String
+  },
+  
+ 
 
   // phdthesis: {
   //   type: String

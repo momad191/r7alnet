@@ -10,7 +10,7 @@ const ListMy = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(6);
+  const [postsPerPage] = useState(100);
 
      
 
@@ -41,12 +41,12 @@ const ListMy = () => {
 
 <h1>Members</h1>
  
-        <Link to="/searchMembersByCountry" title="Dashboard" className=''><i className="fas fa-search text-primary"></i> <span className="hide-sm text-dark">By Country </span></Link>--
+        {/* <Link to="/searchMembersByCountry" title="Dashboard" className=''><i className="fas fa-search text-primary"></i> <span className="hide-sm text-dark">By Country </span></Link>-- */}
         <Link to="/searchMembersBySpecialty" title="Dashboard" className=''><i className="fas fa-search text-primary"></i> <span className="hide-sm text-dark">By Specialization </span></Link>--
         <Link to="/searchMembersByName" title="Dashboard" className=''><i className="fas fa-search text-primary"></i> <span className="hide-sm text-dark">By Name </span></Link>--
         <Link to="/searchMembersByWorkPlace" title="Dashboard" className=''><i className="fas fa-search text-primary"></i> <span className="hide-sm text-dark">By Work Place </span></Link>
  
- 
+  
 
    
  

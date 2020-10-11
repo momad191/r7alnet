@@ -44,14 +44,24 @@ router.get('/', auth, async (req, res) => {
   });
 
 
+
+  router.get('/show', async (req, res) => {
+    try {
+      const webinar = await Webinar.find().sort({ date: -1 });
+      res.json(webinar);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  });
+ 
  
 
-
 router.post('/', upload.single('WebinarImg'), (req, res, next) => {
-    //const url = req.protocol + '://' + req.get('host')
+    // const url = req.protocol + '://' + req.get('host')
    // const url = 'https://s-rf-heroku.herokuapp.com'
 
-    const url = 'https://s-rf-heroku.herokuapp.com'
+   const url = 'https://s-rf-heroku.herokuapp.com'
     const webinar = new Webinar({
 
         _id: new mongoose.Types.ObjectId(),

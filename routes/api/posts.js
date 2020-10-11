@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator/check');
 const auth = require('../../middleware/auth');
-
+ 
 const Post = require('../../models/Post');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const escapeRegex = require('../../regex-escape')
 
 // @route    POST api/posts
 // @desc     Create a post
@@ -15,7 +16,7 @@ router.post(
   [
     auth,
     [
-      check('title_article', 'Text is required')
+      check('URL', 'Text is required')
         .not()
         .isEmpty()
     ]
@@ -28,7 +29,7 @@ router.post(
 
     try {
       const user = await User.findById(req.user.id).select('-password');
- 
+  
       const newPost = new Post({
         first_name: req.body.first_name,
         last_name: req.body.last_name,
@@ -39,8 +40,7 @@ router.post(
         pages: req.body.pages,
         DOI: req.body.DOI,
         ISSN: req.body.ISSN,
-
-
+        URL: req.body.URL,
 
         // phdthesis: req.body.phdthesis,
         // proceedings: req.body.proceedings,
@@ -92,7 +92,7 @@ router.post(
 // @access   Private
 router.get('/', auth, async (req, res) => {
   try {
-    const posts = await Post.find().sort({ date: -1 });
+    const posts = await Post.find({}).sort({ date: -1 });
     res.json(posts);
   } catch (err) {
     console.error(err.message);
@@ -119,6 +119,13 @@ router.get('/:id', auth, async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+ 
+
+
+
+
+
+
  
 // @route    DELETE api/posts/:id
 // @desc     Delete a post
@@ -282,5 +289,23 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+
+ 
+// @route    GET api/posts/userposts/:user
+// @desc     Get posts by user ID
+// @access   Public
+
+
+router.get('/up/up/:id', async (req, res) => {
+ 
+  try {
+    const upee = await Post.find({_id:req.params.id});
+    res.json(upee);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+  
 
 module.exports = router;

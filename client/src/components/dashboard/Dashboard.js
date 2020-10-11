@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import DashboardActions from './DashboardActions';
 import ccv from './ccv.png';
+import uuser from './uuser.png';
+
+
   
   
 //import Experience from './Experience';
@@ -38,7 +41,7 @@ const Dashboard = ({
 
       {/* <p className='lead'>  <h1> {user.cv}</h1> </p> */}
 
-
+ 
       {profile !== null ? (
         <Fragment>
 <table>
@@ -47,11 +50,30 @@ const Dashboard = ({
      <Link to={"/EdituserImg/"+user._id}><img src={user.avatar} width='150' height='120' alt="Clik on Picture To Change" /></Link>
       <p style={{ fontSize:'11px', fontWeight:'Bold'}}>Clik on Picture To Change it</p>
       </td>
+
+       
+     
+
+       
+
       <td>
       <Link to={"/Editusercv/"+user._id}><img src={ccv} width='150' height='120' alt="Upload Yor CV" /></Link>
 
-      <p className='lead' style={{ fontSize:'11px', fontWeight:'Bold',width:'100%'}}>  <a href= {"/Editusercv/"+user._id}   > {user.cv} </a> </p>
+      <p className='lead' style={{ fontSize:'11px', fontWeight:'Bold',width:'100%'}}>  <a href= {user.cv}   > {user.cv} </a> </p>
+     
+      {/* <p className='lead' style={{ fontSize:'11px', fontWeight:'Bold',width:'100%'}}>  {user.cv}  </p> */}
+
       </td>
+
+
+      {/* <td>
+     <Link to={"/profile/"+user._id}><img src={uuser} width='150' height='120' alt="profile" /></Link>
+      <p style={{ fontSize:'11px', fontWeight:'Bold'}}>profile</p>
+      </td> */}
+
+ 
+      
+
       </tr>
 </table>
 

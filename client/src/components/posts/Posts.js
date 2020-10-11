@@ -4,20 +4,20 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 //import PostItem from './PostItem';
 //import PostForm from './PostForm';
-import { getPosts } from '../../actions/post';
+ import { getPosts } from '../../actions/post';
+//import { getProfiles } from '../../actions/profile';
+  
 import Pagination from '../pages/Pagination';
 import Posts1 from '../posts/WWListPosts';
 import { Link } from 'react-router-dom';
- 
+     
 const Posts = ({ getPosts, post: { posts, loading } }) => {
-
+  
   
   //const [setPosts] = useState([]);
   //const [ setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(25);
-
-
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -38,8 +38,8 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
       <p className='lead'>
         <i className='fas fa-book' /> Welcome to the community
       </p>
-
-    
+  
+     
       <Link to='/addpost' className='btn btn-success'>
       <i className='fas fa-plus' /> Add Post
       </Link>
@@ -58,6 +58,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
           <PostItem key={post._id} post={post} />
         ))}
       </div> */}
+
 
     <Posts1 posts={currentPosts} loading={loading} />
      <h5>Pages</h5>

@@ -42,7 +42,7 @@ router.get('/', auth, async (req, res) => {
     }
   });
 
-
+ 
   router.get('/show', async (req, res) => {
     try {
       const luminaries = await Luminaries.find().sort({ L_date: -1 });

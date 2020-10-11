@@ -28,7 +28,7 @@ const thStyle =
 
  
 
-const Posts = ({ posts, loading }) => {
+const Posts = ({ posts, loading ,auth,user }) => {
   if (loading) {
     return <h2>Loading...</h2>;
   }
@@ -89,18 +89,15 @@ const Posts = ({ posts, loading }) => {
  <td style={tdStyle}>{pd.Research_Field}</td>
  <td style={tdStyle}>{pd.Specialization}</td>
  <td style={tdStyle}>{pd.Potential_talk_title}</td>
-
+  
  {/* <td style={tdStyle}>{props.exercise. other_information}</td>
  <td style={tdStyle}>{props.exercise. date}</td> */}
  
-  
-  
- <td style={tdStyle}>
-   <Link to={"/Editwebinars/"+pd._id}>Edit</Link>  
-  
-  </td>
    
  
+ <td style={tdStyle}>
+   <Link to={"/Editwebinars/"+pd._id}>Edit</Link>  
+  </td>
 </tr>
 ))}
 

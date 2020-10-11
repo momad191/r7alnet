@@ -24,6 +24,7 @@ const storage = multer.diskStorage({
 
 var upload = multer({
   storage: storage,
+  
   fileFilter: (req, file, cb) => {
       if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg" || file.mimetype == "application/pdf" || file.mimetype == "application/msword" || file.mimetype == "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
           cb(null, true);
@@ -64,7 +65,9 @@ router.route('/:id').get((req, res) => {
 
 router.route('/EdituserImg/:id').post(upload.single('avatar'),auth,(req, res) => {
   //const url = req.protocol + '://' + req.get('host')
+  
   const url = 'https://s-rf-heroku.herokuapp.com'
+   //const url = 'http://localhost:5000'
   User.findById(req.params.id)
     .then(user => {
       user.name = req.body.name;   
@@ -86,6 +89,8 @@ router.route('/update/:id').post((req, res) => {
     .then(user => {
       user.name = req.body.name;
       user.email = req.body.email;
+      user.password = req.body.password;
+      user.validity = req.body.validity;
       // luminaries.L_contribution = req.body.L_contribution;
       // luminaries.L_date = req.body.L_date;
       // luminaries.L_Website = req.body.L_Website;
@@ -106,7 +111,9 @@ router.route('/update/:id').post((req, res) => {
  
  
 router.route('/Editusercv/:id').post(upload.single('cv'),auth,(req, res) => {
-  //const url = req.protocol + '://' + req.get('host')
+  // const url = req.protocol + '://' + req.get('host')
+  // const url = 'http://localhost:5000'
+  
   const url = 'https://s-rf-heroku.herokuapp.com'
   User.findById(req.params.id)
     .then(user => {
@@ -150,7 +157,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password } = req.body;
+    const { name, email, password, validity } = req.body;
 
     try {
       let user = await User.findOne({ email });
@@ -171,7 +178,8 @@ router.post(
         name,
         email,
         avatar,
-        password
+        password,
+        validity
       });
  
       const salt = await bcrypt.genSalt(10);
@@ -185,7 +193,7 @@ router.post(
           id: user.id
         }
       };
-
+  
       jwt.sign(
         payload,
         config.get('jwtSecret'),

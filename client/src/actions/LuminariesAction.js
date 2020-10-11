@@ -21,6 +21,7 @@ export const addLuminaries = formData => async dispatch => {
       });
   
       dispatch(setAlert('Luminaries Created', 'success'));
+      window.location = '/showLuminaries';
     } catch (err) {
       dispatch({
         type: GET_ERRORS,

@@ -18,17 +18,28 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </h1>
 
     <ul>
+ 
+    <li> 
+        <Link to='/WebinarRegistration'> <i class="fas fa-plus"></i>  Webinar Registration</Link>
+      </li>
 
-       {/* <li> 
-        <Link to='/addpost'> <i class="fas fa-plus"></i> Add publications</Link>
-      </li> */}
+      <li>
+        <Link to='/posts'>Publications</Link>
+      </li>
+
+    <li> 
+        <Link to='/showLuminaries'>   Luminaries </Link>
+      </li>
+
+      <li> 
+        <Link to='/showWebinars'>   Latest webinars </Link>
+      </li>
+
 
       <li>
         <Link to='/showMembers'>Members</Link>
       </li>
-      <li>
-        <Link to='/posts'>Publications</Link>
-      </li>
+     
  
       {/* <li>
         <Link to='/questions'>Questions</Link>
@@ -40,6 +51,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           <span className='hide-sm'>Dashboard</span>
         </Link>
         </li>
+
+
         {/* <li><Link to="dashboard.html" title="Dashboard"><i class="fas fa-square"></i> <span class="hide-sm">Add Webinars</span></Link></li>
         <li><Link to="dashboard.html" title="Dashboard"><i class="fas fa-square"></i> <span class="hide-sm">Add Luminaries</span></Link></li>
         <li><Link to="dashboard.html" title="Dashboard"><i class="fas fa-square"></i> <span class="hide-sm">Add Members</span></Link></li>
@@ -94,6 +107,10 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
       <li>
         <Link to='/webinars'> Webinars </Link>
+      </li>
+
+      <li> 
+        <Link to='/showWebinars'>   Latest webinars </Link>
       </li>
 
       <li>

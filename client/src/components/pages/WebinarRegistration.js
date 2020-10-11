@@ -2,7 +2,7 @@ import React from 'react';
 //import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addWebinars } from '../../actions/webinarsAction';
-
+ 
    class WebinarsRegistration extends React.Component {
      constructor(props) {
       super(props);

@@ -14,7 +14,8 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
-  },
+  }, 
+  
   avatar: {
     type: String
   },
@@ -23,6 +24,10 @@ const UserSchema = new mongoose.Schema({
     default: "no uploaded cv"
      
   },
+  validity: {
+    type: String,
+    default: "normal"
+  }, 
   date: {
     type: Date,
     default: Date.now

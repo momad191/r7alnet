@@ -4,7 +4,7 @@ const ProfileSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
-  },    
+  },      
   company: {
     type: String
   },
@@ -56,9 +56,10 @@ const ProfileSchema = new mongoose.Schema({
         type: String
       }
     }
-  ],
-  education: [
+  ], 
+  education: [ 
     {
+   
       school: {
         type: String,
         required: true
@@ -85,37 +86,85 @@ const ProfileSchema = new mongoose.Schema({
       description: {
         type: String
       }
+    } 
+  ],
+    
+  spost: [   
+    {
+    first_name: {
+      type: String
+    },
+    last_name: {
+      type: String
+    },
+    year: {
+      type: String
+    },
+    title_article: {
+      type: String,
+      required: true
+    },
+    title_journal: {
+      type: String
+    },
+    
+    volume: {
+      type: String
+    },
+    pages: {
+      type: String
+    },
+    DOI: {
+      type: String
+    },
+    ISSN: {
+      type: String
+    },
+    URL: {
+      type: String
     }
-  ], 
+
+  }
+  ],
+
   social: {
     youtube: {
-      type: String
+      type: String,
+      default: "not chosen yet"
     },
     twitter: {
-      type: String
+      type: String,
+      default: "not chosen yet"
     },
     facebook: {
-      type: String
+      type: String,
+      default: "not chosen yet"
     },
     linkedin: {
-      type: String
+      type: String,
+      default: "not chosen yet"
     },
     github: {
-      type: String
+      type: String,
+      default: "not chosen yet"
     },
     stackoverflow: {
-      type: String
+      type: String,
+      default: "not chosen yet"
     },
     researchgate: {
-      type: String
+      type: String,
+      default: "not chosen yet"
     },
     orcid: {
-      type: String
+      type: String,
+      default: "not chosen yet"
     },
     website: {
-      type: String
+      type: String,
+      default: "not chosen yet"
     },
-  },
+  }, 
   date: {
     type: Date,
     default: Date.now
