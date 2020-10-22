@@ -116,6 +116,11 @@ import searchQuestionByTags from '../questions/searchQuestionByTags';
 
 
 
+import Reset from '../auth/Reset'
+import NewPassword from '../auth/Newpassword'
+import emailSendingComfirmation from '../auth/emailSendingComfirmation'
+
+ 
 
 
 
@@ -149,6 +154,17 @@ const Routes = () => {
     <section className='container'>
       <Alert />
       <Switch>
+
+      <Route exact path='/Reset' component={Reset} />
+      <Route exact path='/NewPassword' component={NewPassword} />
+      <Route exact path='/NewPassword/:id' component={NewPassword} />
+      <Route exact path='/emailSendingComfirmation' component={emailSendingComfirmation} />
+
+      
+
+
+      
+      
 
         <Route exact path='/reputations' component={reputations} />
         <Route exact path='/about' component={about} />

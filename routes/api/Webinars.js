@@ -4,7 +4,14 @@ let express = require('express'),
     uuidv4 = require('uuid/v4'),
     router = express.Router();
     const auth = require('../../middleware/auth');
+    const cloudinary = require('cloudinary').v2;
     const DIR = './public/';
+
+    cloudinary.config({
+      cloud_name: "momad191",
+      api_key: "569326899647897",
+      api_secret: "OGnEPD07ZzKxlk2WeATnuGShhNw",
+    });
  
 
 const storage = multer.diskStorage({
@@ -57,11 +64,14 @@ router.get('/', auth, async (req, res) => {
  
  
 
-router.post('/', upload.single('WebinarImg'), (req, res, next) => {
+router.post('/', upload.single('WebinarImg'),async(req, res, next) => {
     // const url = req.protocol + '://' + req.get('host')
    // const url = 'https://s-rf-heroku.herokuapp.com'
 
-   const url = 'https://s-rf-heroku.herokuapp.com'
+  //  const url = 'https://s-rf-heroku.herokuapp.com'
+ // Upload image to clou dinary
+ const result = await cloudinary.uploader.upload(req.file.path);
+
     const webinar = new Webinar({
 
         _id: new mongoose.Types.ObjectId(),
@@ -81,7 +91,8 @@ router.post('/', upload.single('WebinarImg'), (req, res, next) => {
          Potential_talk_title: req.body.Potential_talk_title,
          other_information: req.body.other_information,
          date: req.body.date,
-         WebinarImg: url + '/public/' + req.file.filename
+         WebinarImg: result.secure_url
+        // WebinarImg: url + '/public/' + req.file.filename
 
 
 
@@ -138,12 +149,15 @@ router.route('/:id').get((req, res) => {
 
 
   
-router.route('/EditwebinarsImg/:id').post(upload.single('WebinarImg'),(req, res) => {
+router.route('/EditwebinarsImg/:id').post(upload.single('WebinarImg'),async(req, res) => {
     //const url = req.protocol + '://' + req.get('host')
     //const url = 'https://s-rf-heroku.herokuapp.com'
 
-    const url = 'https://s-rf-heroku.herokuapp.com'
+    // const url = 'https://s-rf-heroku.herokuapp.com'
 
+    // Upload image to clou dinary
+    const result = await cloudinary.uploader.upload(req.file.path);
+ 
     Webinar.findById(req.params.id)
       .then(webinar => {
         webinar.Surname = req.body.Surname;
@@ -161,7 +175,8 @@ router.route('/EditwebinarsImg/:id').post(upload.single('WebinarImg'),(req, res)
         // webinar.Potential_talk_title = req.body.Potential_talk_title;
         // webinar.other_information = req.body.other_information;
         // webinar.date = req.body.date;
-        webinar.WebinarImg = url + '/public/' + req.file.filename;
+        // webinar.WebinarImg = url + '/public/' + req.file.filename;
+        webinar.WebinarImg =result.secure_url;
          
         // webinar.duration = Number(req.body.duration);
         // webinar.date = Date.parse(req.body.date);

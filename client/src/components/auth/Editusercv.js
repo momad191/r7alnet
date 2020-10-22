@@ -92,7 +92,7 @@ export default class EditLuminariesImg extends Component {
     // formData.append('L_biography', this.state.L_biography);
  
     //this.props.addWebinars(formData);
-   axios.post('https://s-rf-heroku.herokuapp.com/api/users/Editusercv/' + this.props.match.params.id, formData)
+   axios.post('/api/users/Editusercv/'+ this.props.match.params.id, formData)
 
   //  axios.post('http://localhost:5000/api/users/Editusercv/' + this.props.match.params.id, formData)
 

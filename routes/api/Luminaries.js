@@ -4,7 +4,16 @@ let express = require('express'),
     uuidv4 = require('uuid/v4'),
     router = express.Router();
     const auth = require('../../middleware/auth');
+    const cloudinary = require('cloudinary').v2;
+
     const DIR = './public/';
+
+    cloudinary.config({
+      cloud_name: "momad191",
+      api_key: "569326899647897",
+      api_secret: "OGnEPD07ZzKxlk2WeATnuGShhNw",
+    });
+
   
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -57,15 +66,19 @@ router.get('/', auth, async (req, res) => {
 
  
 
-router.post('/', upload.single('L_Img'), (req, res, next) => {
+router.post('/', upload.single('L_Img'),async(req, res, next) => {
     //const url = req.protocol + '://' + req.get('host')
     //const url = 'https://s-rf-heroku.herokuapp.com'
-    const url = 'https://s-rf-heroku.herokuapp.com'
+    // const url = 'https://s-rf-heroku.herokuapp.com'
+
+      // Upload image to clou dinary
+    const result = await cloudinary.uploader.upload(req.file.path);
     
     const luminaries = new Luminaries({
  
         _id: new mongoose.Types.ObjectId(),
-        L_Img: url + '/public/' + req.file.filename,
+        L_Img:result.secure_url,
+        // L_Img: url + '/public/' + req.file.filename,
         L_name: req.body.L_name,
         L_specialty: req.body.L_specialty,
         L_contribution: req.body.L_contribution,
@@ -115,17 +128,21 @@ router.route('/:id').get((req, res) => {
 
 
   
- 
+  
 
   
-router.route('/EditLuminariesImg/:id').post(upload.single('L_Img'),(req, res) => {
+router.route('/EditLuminariesImg/:id').post(upload.single('L_Img'),async(req, res) => {
   //const url = req.protocol + '://' + req.get('host')
   //const url = 'https://s-rf-heroku.herokuapp.com'
-  const url = 'https://s-rf-heroku.herokuapp.com'
+  // const url = 'https://s-rf-heroku.herokuapp.com'
+    // Upload image to clou dinary
+    const result = await cloudinary.uploader.upload(req.file.path);
+ 
   Luminaries.findById(req.params.id)
     .then(luminaries => {
       luminaries.L_name = req.body.L_name;   
-      luminaries.L_Img = url + '/public/' + req.file.filename;
+      luminaries.L_Img = result.secure_url;
+      // luminaries.L_Img = url + '/public/' + req.file.filename;
 
       luminaries.save()
         .then(() => res.json('luminaries image updated!'))

@@ -9,8 +9,16 @@ const uuidv4 = require('uuid/v4');
 const mongoose = require('mongoose');
 const auth = require('../../middleware/auth');
 const DIR = './public/';
+const cloudinary = require('cloudinary').v2;
+
 const { check, validationResult } = require('express-validator/check');
  
+cloudinary.config({
+  cloud_name: "momad191",
+  api_key: "569326899647897",
+  api_secret: "OGnEPD07ZzKxlk2WeATnuGShhNw",
+});
+
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -60,25 +68,27 @@ router.route('/:id').get((req, res) => {
 
 
 
-//******************************************************************** */
+//******************************old updat picture ************************************** */
  
 
-router.route('/EdituserImg/:id').post(upload.single('avatar'),auth,(req, res) => {
-  //const url = req.protocol + '://' + req.get('host')
+// router.route('/EdituserImg/:id').post(upload.single('avatar'),auth,(req, res) => {
+//   //const url = req.protocol + '://' + req.get('host')
   
-  const url = 'https://s-rf-heroku.herokuapp.com'
-   //const url = 'http://localhost:5000'
-  User.findById(req.params.id)
-    .then(user => {
-      user.name = req.body.name;   
-      user.avatar = url + '/public/' + req.file.filename;
+//   const url = 'https://s-rf-heroku.herokuapp.com'
+//    //const url = 'http://localhost:5000'
+//   User.findById(req.params.id)
+  
+//     .then(user => {
+//       user.name = req.body.name;   
+//       user.avatar = url + '/public/' + req.file.filename;
 
-      user.save()
-        .then(() => res.json('User image updated!'))
-        .catch(err => res.status(400).json('Error: ' + err));
-    })
-    .catch(err => res.status(400).json('Error: ' + err));
-});
+//       user.save()
+//         .then(() => res.json('User image updated!'))
+//         .catch(err => res.status(400).json('Error: ' + err));
+//     })
+//     .catch(err => res.status(400).json('Error: ' + err));
+
+// });
 
   
 
@@ -110,15 +120,20 @@ router.route('/update/:id').post((req, res) => {
 //******************************************************************** */
  
  
-router.route('/Editusercv/:id').post(upload.single('cv'),auth,(req, res) => {
+router.route('/Editusercv/:id').post(upload.single('cv'),auth, async (req,res) => {
   // const url = req.protocol + '://' + req.get('host')
-  // const url = 'http://localhost:5000'
-  
-  const url = 'https://s-rf-heroku.herokuapp.com'
+ // const url = 'http://localhost:5000'
+
+  // const url = 'https://s-rf-heroku.herokuapp.com'
+
+    // // Upload image to clou dinary
+    const result = await cloudinary.uploader.upload(req.file.path);
+ 
   User.findById(req.params.id)
     .then(user => {
       user.name = req.body.name;   
-      user.cv = url + '/public/' + req.file.filename;
+      user.cv = result.secure_url;
+      // user.cv = url + '/public/' + req.file.filename;
 
       user.save()
         .then(() => res.json('User cv updated!'))
@@ -209,5 +224,39 @@ router.post(
     }
   }
 );
+
+
+
+
+router.route('/EdituserImg/:id').post(upload.single('avatar'),auth, async (req, res) => {
+ 
+    //const url = req.protocol + '://' + req.get('host')
+  
+  //const url = 'https://s-rf-heroku.herokuapp.com'
+  // const url = 'http://localhost:5000'
+
+
+
+    // // Upload image to cloudinary
+    const result = await cloudinary.uploader.upload(req.file.path);
+   
+ 
+
+  User.findById(req.params.id)
+  
+    .then(user => {
+      user.name = req.body.name;   
+      user.avatar= result.secure_url;
+      // user.avatar = url + req.file.filename;
+      //user.avatar = url + '/public/' + req.file.filename;
+
+      user.save()
+        .then(() => res.json('User image updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+
+});
+
 
 module.exports = router;

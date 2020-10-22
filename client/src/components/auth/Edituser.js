@@ -86,12 +86,11 @@ export default class Editwebinars extends Component {
       name: this.state.name,
       email: this.state.email
       
-
     }
 
     console.log(user);
 
-    axios.post('/api/users/update/' + this.props.match.params.id, user)
+    axios.post('/api/users/update/'+ this.props.match.params.id, user)
     .then(res => console.log(res.data));
 
    window.location = '/Allmembers';
