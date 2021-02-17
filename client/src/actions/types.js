@@ -2,7 +2,7 @@ export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
-export const USER_LOADED = 'USER_LOADED';
+export const USER_LOADED = 'USER_LOADED'; 
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
@@ -40,4 +40,14 @@ export const ADD_Webinars = 'ADD_Webinars';
 export const ADD_IMAGE = 'ADD_IMAGE';
 export const GET_IMAGES = 'GET_IMAGES';
 export const GET_ERRORS  = 'GET_ERRORS ';
+
+
+export const UPDATE_IMAGE  = 'UPDATE_IMAGE ';
+export const IMAGE_ERROR  = 'IMAGE_ERROR ';
+
+
+export const ADD_MSG  = 'ADD_MSG ';
+export const MSG_ERROR  = 'MSG_ERROR ';
+
+
 

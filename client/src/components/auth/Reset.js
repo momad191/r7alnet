@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Fragment,Component } from 'react';
 import axios from 'axios';
 import Moment from 'react-moment';
 //import DatePicker from 'react-datepicker';
@@ -79,7 +79,7 @@ export default class Editwebinars extends Component {
       
       email: this.state.email
       
-
+ 
     }
  
     console.log(user);
@@ -92,56 +92,61 @@ export default class Editwebinars extends Component {
  
   render() {
     return (
- 
- 
-      <div className="form-container">
-      <form className="form" encType="multipart/form-data" onSubmit={this.onSubmit}> 
-   
-      
-      <h1 className="middle text-primary"><i className="fas fa-star"></i> Forgot Password </h1>	 
-   
-      
-      
-   
-   
-   
-      <div className="form-group">
-      <label className="form-label">Enter Your Email To Send Reset Message  </label>
-      <input  className="form-contact" placeholder="" type="text"value={this.state.email} onChange={this.onChangeemail} required/>
-      </div>
-   
- 
- 
 
-{/* 
-        <div className="form-group">
-      <span> Date </span>
-            <input type="date"   name="name"  value={this.state.L_date} onChange={this.onChangeL_date}  />
-        </div>
-        <div className="form-group">
-        <Moment format='YYYY/MM/DD'>{this.state.date}</Moment>
-        </div> */}
+      <Fragment>
+       
+    
+       
+      <section id="login-reg" >
+              
+              <div class="row">
+                 
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                     <div class="form-box">
+                         <div class="form-top" style={{backgroundColor:'#363636'}}>
+                             <div class="form-top-left">
+                                  
+                             </div>
+                             <div class="form-top-right">
+                             استعادة كلمة المرور <i class="fa fa-"></i>
+                             </div>
+                         </div> 
+  
 
-
+         <div class="form-bottom"  style={{backgroundColor:'#58ACFA'}}>
+        <form role="form" action="" class="login-form"  encType="multipart/form-data" onSubmit={this.onSubmit}>
 
     
    
-   {/* <div className="form-group">
-      <label className="form-label"> Image  </label>
-     <input type="file"
-     className="form-input"
-      
-     onChange={this.onChangeL_Img}  />
-   </div> */}
+      <div class="input-group form-group">
+                               
+                               <input type="text" class="form-control" placeholder=" البريد الالكتروني " aria-describedby="basic-addon1" autocomplete="off"
+                                name='name'
+                                value={this.state.email}
+                                onChange={this.onChangeemail}
+                                style={{color:'#000',fontWeight:'bold',float:'right',direction:'rtl'}}
+                                required
+                             />
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
+                           </div>
+ 
 
-   {/* <img width="200" height="120" src= {this.state.avatar} alt=" avatar" /> */}
+
+                           <button style={{backgroundColor:'#363636'}} type="submit" class="momadbtn">أرسل</button>
+
   
    
-   <div className="form-group">
-     <button style={{width :'500px' , height:'50px', background:'#257E83', color:'#fff', cursor:'pointer' }}  type="submit" className="submit-btn">Send</button>
-     </div>
+   
+
+
      </form>
      </div>
+     </div>
+     </div>
+     </div>
+     </section>
+     
+     </Fragment>
 
     )
   }

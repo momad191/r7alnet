@@ -1,6 +1,7 @@
 {
- "mongoURI":"mongodb://hisham:hisham123@sresearchers-shard-00-00.u60fw.mongodb.net:27017,sresearchers-shard-00-01.u60fw.mongodb.net:27017,sresearchers-shard-00-02.u60fw.mongodb.net:27017/test?ssl=true&replicaSet=atlas-ro9jhb-shard-0&authSource=admin&retryWrites=true&w=majority",
+  "mongoURI": "mongodb://magazine1:maga123123@momad-cluster-shard-00-00.jqf41.mongodb.net:27017,momad-cluster-shard-00-01.jqf41.mongodb.net:27017,momad-cluster-shard-00-02.jqf41.mongodb.net:27017/magazine?ssl=true&replicaSet=MOMAD-Cluster-shard-0&authSource=admin&retryWrites=true&w=majority",
   "jwtSecret": "secret",
   "githubClientId": "",
   "githubSecret": ""
+   
 }

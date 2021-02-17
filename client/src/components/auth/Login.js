@@ -9,7 +9,7 @@ const Login = ({ login, isAuthenticated }) => {
     email: '',
     password: ''
   });
-
+ 
   const { email, password } = formData;
 
   const onChange = e =>
@@ -21,46 +21,65 @@ const Login = ({ login, isAuthenticated }) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to='/dashboard' />;
+    return <Redirect to='/' />;
   }
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Sign In</h1>
-      <p className='lead'>
-        <i className='fas fa-user' /> Sign Into Your Account
-      </p>
-      <form className='form' onSubmit={e => onSubmit(e)}>
-        <div className='form-group'>
-          <input
-          style={{width:'50%'}}
-            type='email'
-            placeholder='Email Address'
-            name='email'
-            value={email}
-            onChange={e => onChange(e)}
-            required
-          />
-        </div>
-        <div className='form-group'>
-          <input
-           style={{width:'50%'}}
-            type='password'
-            placeholder='Password'
-            name='password'
-            value={password}
-            onChange={e => onChange(e)}
-            minLength='6'
-          />
-        </div>
-        <input type='submit' className='btn btn-primary' value='Login' />
-      </form>
-      <p className='my-1'>
-        Don't have an account? <Link to='/register'>Sign Up</Link> | <Link to='/reset'>Forgot Password</Link>
-       
+ 
+<section id="login-reg">
+             <div class="row">
+                 <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-box">
 
-      </p>
-      
+                        <div class="form-top" style={{backgroundColor:'#363636'}}>
+                              <div class="form-top-right">
+                              الدخول   <i class="fa fa-key"></i>
+                              </div>
+                        </div>
+
+                        <div class="form-bottom"  style={{backgroundColor:'#58ACFA'}}>
+                            <form role="form" action="" class="login-form" onSubmit={e => onSubmit(e)}>
+                                 
+                                
+                              <div class="input-group form-group">
+                                    <input type="email" class="form-control" placeholder="البريد الالكتروني" aria-describedby="basic-addon1"
+                                     name='email'
+                                     value={email}
+                                     onChange={e => onChange(e)}
+                                     required
+                                     style={{color:'#000',fontWeight:'bold',float:'right',direction:'rtl'}}
+                                    />
+								                  	<span class="input-group-addon" id="basic-addon1"><i class="fa fa-envelope"></i></span>
+                              </div>
+
+
+                              <div class="input-group form-group"> 
+                                    <input type="password" class="form-control" placeholder="كلمة المرور" aria-describedby="basic-addon1"
+                                    name='password'
+                                    value={password}
+                                    onChange={e => onChange(e)}
+                                    minLength='6'
+                                    style={{color:'#000',fontWeight:'bold',float:'right',direction:'rtl'}}
+                                    />
+							                    	<span class="input-group-addon" id="basic-addon1"><i class="fa fa-key"></i></span>
+                              </div>
+						
+                             
+								
+                                <button style={{backgroundColor:'#363636'}} type="submit" class="momadbtn">دخول</button>
+                                <a href="/reset"><h3>نسيت كلمة المرور  </h3></a> 
+                                <a href="/reset"><h3> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                  </h3></a>
+                                <a href="/register" ><h3>الإشتراك   </h3></a>
+                             </form> 
+                        </div>
+                    </div>
+                  </div>
+                </div>
+    </section>
+
       
     </Fragment>
   );

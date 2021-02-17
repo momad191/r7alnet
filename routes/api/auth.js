@@ -17,8 +17,8 @@ var transporter = nodemailer.createTransport({
   //port: 587,
   //secure: false,
   auth: {
-    user: 'researchers.archive@gmail.com',
-    pass: '#srf4191933!'
+    user: 'r7al.social@gmail.com',
+    pass: 'R7al2366671911#'
    // pass: '&U4}a$JKly[j'
   }
    
@@ -105,7 +105,7 @@ router.post('/reset-password',(req,res)=>{
       if(err){
           console.log(err)
       }
-     
+      
       const token = buffer.toString("hex")
       User.findOne({email:req.body.email})
       .then(user=>{
@@ -117,11 +117,11 @@ router.post('/reset-password',(req,res)=>{
           user.save().then((result)=>{
               transporter.sendMail({
                   to:user.email,
-                  from:"researchers.archive@gmail.com",
-                  subject:"From Sudanese Researchers Website To Reset your Password",
+                  from:"r7al.social@gmail.com",
+                  subject:" من موقع رحال لاستعادة كلمة المرور ",
                   html:`
-                  <p>You requested for password reset</p>
-                  <h5>click in this <a href="https://s-rf-heroku.herokuapp.com/Newpassword/${user.id}">link</a> to reset password</h5>
+                  <p>طلبت استعادة كلمة المرور</p>
+                  <h5>اضغط هنا <a href="https://r7al.net/Newpassword/${user.id}">الرابط</a> لتغيير كلمة المرور</h5>
                   <p>Thank you </p>
                   `
               })
@@ -154,7 +154,7 @@ router.route('/new-password/:id').post((req, res) => {
          user.resetToken = undefined
          user.expireToken = undefined
          user.save().then((saveduser)=>{
-             res.json({message:"password updated success"})
+             res.json({message:"تم تحديث كلمة المرور بنجاح"})
          })
       })
   }).catch(err=>{

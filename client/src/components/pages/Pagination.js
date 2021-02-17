@@ -12,11 +12,11 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
     <nav>
       <ul >
         {pageNumbers.map(number => (
-          <button style={{width :'25px' , background:'#257E83' }} key={number} >
-            <Link style={{color:'#000' , fontSize:'15px',fontWeight:'bold'  }} onClick={() => paginate(number)} >
+           
+            <Link style={{width :'auto' ,padding:'5px', background:'#0B0B61',float:'right' ,color:'#fff' , fontSize:'13px',fontWeight:'bold',marginRight:'5px',alignContent:'right'  }} onClick={() => paginate(number)} key={number}>
               {number}
             </Link>
-          </button>
+           
         ))}
       </ul>
     </nav>
@@ -24,3 +24,4 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
 };
 
 export default Pagination;
+ 

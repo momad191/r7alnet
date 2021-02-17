@@ -4,7 +4,7 @@ import ss from '../layout/ss.png';
 
 const Sidebar = () => {
   return (
-    <div className='sidenav'>
+    <div className='top-header'>
 
       <Link to='/'>
         <img className='imglogo' src={ss} width="60px" height="40px"/>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
 import stackoverflow1 from './logos/stackoverflow1.jpg';
- 
+   
 const CreateProfile = ({
 	createProfile,
 	getCurrentProfile,
@@ -62,12 +62,23 @@ const CreateProfile = ({
 		<Redirect to='/dashboard' />
 	) : (
 		<Fragment>
-			<h1 className='large text-primary'>Create Your Profile</h1>
-			<p className='lead'>
-				<i className='fas fa-user' /> Let's get some information to make your
-				profile stand out 
-			</p>
-			<small>* = required field</small>
+			 
+             <section id="login-reg" >
+        
+        <div class="row">
+           
+            <div class="col-lg-12 col-md-12 col-sm-12">
+               <div class="form-box">
+                   <div class="form-top">
+                       <div class="form-top-left">
+                          
+                       </div>
+                       <div class="form-top-right">
+                       إنشئ ملفك <i class="fa fa-file"></i>
+                       </div>
+                   </div>
+
+
 			<form className='form' onSubmit={e => onSubmit(e)}>
 				<div className='form-group'>
 					<select name='status' value={status} onChange={e => onChange(e)} required>
@@ -397,7 +408,7 @@ const CreateProfile = ({
    <option value="Taiwan">Taiwan</option>
    <option value="Tajikistan">Tajikistan</option>
    <option value="Tanzania">Tanzania</option>
-   <option value="Thailand">Thailand</option>
+   <option value="Thailand">Thailand</option> 
    <option value="Togo">Togo</option>
    <option value="Tokelau">Tokelau</option>
    <option value="Tonga">Tonga</option>
@@ -660,10 +671,14 @@ const CreateProfile = ({
 					Go Back
 				</Link>
 			</form>
+            </div>
+            </div>
+            </div>
+            </section>
 		</Fragment>
 	);
 };
-
+ 
 CreateProfile.propTypes = {
 	createProfile: PropTypes.func.isRequired,
 	getCurrentProfile: PropTypes.func.isRequired,

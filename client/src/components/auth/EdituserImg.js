@@ -1,192 +1,206 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-//import Moment from 'react-moment';
-//import { connect } from 'react-redux';
-//import { addWebinars } from '../../actions/webinarsAction';
-//import DatePicker from 'react-datepicker';
-//import "react-datepicker/dist/react-datepicker.css";
-     
-//class Editwebinars extends React.Component {
-export default class EditLuminariesImg extends Component {
-  constructor(props) {
-    super(props);
-    this.onChangeavatar = this.onChangeavatar.bind(this);
-    this.onChangename = this.onChangename.bind(this);
-     this.onChangeemail = this.onChangeemail.bind(this);
-    // this.onChangeL_specialty = this.onChangeL_specialty.bind(this);
-    // this.onChangeL_contribution = this.onChangeL_contribution.bind(this);
-    // this.onChangeL_Website = this.onChangeL_Website.bind(this);
-    // this.onChangeL_biography = this.onChangeL_biography.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-
-    this.state = {
-      name: '',
-      avatar: '',
-      email: ''
-        // L_contribution: '',
-        // L_Website: '',
-        // L_date: '',
-        // L_biography: ''  
+import React, { Fragment, useState, useEffect } from 'react';
+import { Link, withRouter ,Redirect} from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createProfile, getCurrentProfile } from '../../actions/profile';
  
-       
-    }
-  }
-  
-  componentDidMount() {
-    axios.get('/api/users/'+this.props.match.params.id)
-      .then(response => {
-        this.setState({
-          name: response.data.name,
-          email: response.data.email,
-          avatar: response.data.avatar,
-        })   
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
+   
  
-  }
- 
-  
-  onChangeavatar = e => {
-    this.setState({ avatar: e.target.files[0] });
-    };
+const EditProfile = ({
+  profile: { profile, loading },
+  createProfile,
+  getCurrentProfile,
+  history,
+  match,
+  isAuthenticated
+}) => {
+  const [avatar, setImage] = useState('')
+   const [waiting, setLoading] = useState(false)
 
-  onChangename = e => {
-   this.setState({ name: e.target.value });
-  };
+  const [formData, setFormData] = useState({
+    name: '',
+    avatar: ''
+  });
 
-  onChangeemail = e => {
-    this.setState({ email: e.target.value });
-   };
+  useEffect(() => {
+    getCurrentProfile(match.params.id);
+    setFormData({
+    //  name: loading || !profile.name ? '' : profile.name,
+    //  avatar: loading || !profile.avatar ? '' : profile.avatar,
 
-  //  onChangeL_contribution = e => {
-  //   this.setState({ L_contribution: e.target.value });
-  //  };
+    });
+  }, [loading, getCurrentProfile]);
 
   
-  //  onChangeL_Website = e => {
-  //   this.setState({ L_Website: e.target.value });
-  //  };
+  const {
+    name,
+    // avatar
+  } = formData;
 
-  //  onChangeL_date = e => {
-  //   this.setState({ L_date: e.target.value });
-  //  };
+  
+
+  const onChange = e =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
 
-  //  onChangeL_biography = e => {
-  //   this.setState({ L_biography: e.target.value });
-  //  };
- 
- 
- 
-  onSubmit(e) {
+    const onChangeimage = e => {
+      setImage({ avatar: e.target.files[0] });
+      };
+
+  const onSubmit = e => {
     e.preventDefault();
-    
-    let formData = new FormData();
-    formData.append('avatar', this.state.avatar);
-    formData.append('name', this.state.name);
-    formData.append('email', this.state.email);
-    // formData.append('L_specialty', this.state.L_specialty);
-    // formData.append('L_contribution', this.state.L_contribution);
-    // formData.append('L_Website', this.state.L_Website);
-    // formData.append('L_date', this.state.L_date);
-    // formData.append('L_biography', this.state.L_biography);
- 
-    //this.props.addWebinars(formData);
+   // createProfile(formData, history, true);
 
-//    axios.post('https://s-rf-heroku.herokuapp.com/api/users/EdituserImg/'+ this.props.match.params.id, formData)
-   axios.post('/api/users/EdituserImg/'+ this.props.match.params.id, formData)
-  
-
-   .then(res => console.log(res.data));
-     window.location = '/profile/'+ this.props.match.params.id;
-    
-    //window.location = '/showMembers';
-
-    
-    
-   } 
-
-
-  // onSubmit(e) {
-  //   e.preventDefault();
-
-  //   const webinars = {
-  //     Surname: this.state.Surname,
-  //     first_name: this.state.first_name,
-  //     Title: this.state.Title,
-  //     Gender: this.state.Gender,
-  //     Email: this.state.Email,
-  //     Website: this.state.Website,
-  //     Phone: this.state.Phone,
-  //     Academic_affiliation: this.state.Academic_affiliation,
-  //     Country: this.state.Country,
-  //     Nationality:this.state.Nationality,
-  //     Key_academic: this.state.Key_academic,
-  //     Research_Field: this.state.Research_Field,
-  //     Specialization: this.state.Specialization,
-  //     Potential_talk_title:this.state.Potential_talk_title,
-  //     other_information: this.state.other_information,
-  //     date: this.state.date,
-  //     WebinarImg:this.state.WebinarImg
-  //   }
- 
-  //   console.log(webinars);
-
-  //   axios.post('http://localhost:5000/api/webinars/update/' + this.props.match.params.id, webinars)
-  //   .then(res => console.log(res.data));
-
-  //  window.location = '/AllWebinars';
-  // }
-
-  render() {
-    return (
-  
-       
-   <div className="form-container">
-   <form className="form" encType="multipart/form-data" onSubmit={this.onSubmit}> 
+    createProfile({ 
+        name,
+        avatar
+    })
 
    
-   <h1 className="middle text-primary"><i className="fas fa-star"></i> Edit User Image </h1>	 
-
-   
-   <div className="form-group">
-   {/* <label className="form-label">The Name</label> */}
-   <input  className="form-contact" placeholder="" type="hidden" value={this.state.name} onChange={this.onChangename}  />
-   </div>
-
-
-   <div className="form-group">
-   {/* <label className="form-label">Email</label> */}
-   <input  className="form-contact" placeholder="" type="hidden" value={this.state.email} onChange={this.onChangeemail}  />
-   </div>
+      return <Redirect to='/' />;
+  
+  };
  
-  
-      <div className="form-group">
-        <label className="form-label"> Change  </label>
-        <input type="file"
-        className="form-input"
-        
-        onChange={this.onChangeavatar} required />
-      </div>
-      
-     {/* <img src={this.state.avatar} alt='' width='200px' height='200px' className='round-square' /> */}
 
-<div className="form-group">
-  <button style={{width :'500px' , height:'50px', background:'#257E83', color:'#fff', cursor:'pointer' }}  type="submit" className="submit-btn">Upload</button>
-  </div>
-  </form>
 
-  {/* <Link to='/' className='btn btn-dark my-1'>
-            Back To dashboard
-          </Link> */}
-  </div>
   
-        
+  const uploadImage = async e => {
+    const files = e.target.files
+    const data = new FormData()
+    data.append('file', files[0])
+    data.append('upload_preset', 'r7alProfiles')
+    setLoading(true)
+    const res = await fetch(
+      'https://api.cloudinary.com/v1_1/momad191/image/upload',
+      {
+        method: 'POST',
+        body: data
+      }
     )
-  }
-}
+    const file = await res.json()
 
-//export default connect(null,{ addWebinars })(Editwebinars);
+    setImage(file.secure_url)
+    setLoading(false)
+  }
+
+
+
+  return (
+    <Fragment>
+          
+<section id="login-reg" >
+        
+        <div class="row">
+           
+            <div class="col-lg-12 col-md-12 col-sm-12">
+               <div class="form-box">
+
+                   <div class="form-top"  style={{backgroundColor:'#363636'}}>
+                       <div class="form-top-left">
+                          
+                       </div>
+                       <div class="form-top-right">
+                       تعديل الصورة   <i class="fa fa-pencil"></i>
+                       </div>
+                   </div>
+
+     <div class="form-bottom" style={{height:'250px',backgroundColor:'#58ACFA'}}>
+
+      <form className='form' onSubmit={e => onSubmit(e)}>
+
+    
+
+
+        <div className='form-group'>
+         
+          <input
+          
+            type='hidden'
+            placeholder='A short bio of yourself'
+            name='name'
+            value={name}
+            onChange={e => onChange(e)}
+          />
+          
+        </div>
+
+
+        {/* <div className='form-group'>
+        avatar
+          <input
+            type='text'
+            placeholder='A short bio of yourself'
+            name='avatar'
+            value={avatar}
+            onChange={e => onChange(e)}
+          />
+          
+        </div> */}
+
+
+         {/* ---------------------------------------------رفع الصورة الرئيسية --------------------------------------- */}
+
+   <div class="col-lg-12 col-md-12 col-sm-12" style={{float:"right",height:'auto'}}>
+      <div class="input-group form-group">
+         <input 
+         style={{cursor:'pointer',width:'20%',float:'right'}}
+        className="form-control"
+        placeholder="Upload an image"
+        type="file"
+        name="file"
+        //value={image} 
+        onChange={uploadImage} />
+       <span class="input-group-addon" id="basic-addon1"><label className="form-label"
+        style={{fontSize:'15px',fontWeight:'bold',color:'#000'}}
+       >رفع الصورة </label></span>
+       
+      </div>
+      </div>
+  
+    <div class="col-lg-12 col-md-12 col-sm-12">
+    
+   {waiting ? (
+        <h3>Loading...</h3>
+      ) : (
+        <Fragment>
+          
+        <img  src={avatar} style={{ width: '120px', height:'80px',float:'right',marginBottom:'10px',borderRadius:'5%' }} />
+        
+        <input    type="hidden" name='avatar' value={avatar}  onChange={onChangeimage} />
+        </Fragment>
+
+      )}
+    
+   </div>
+
+
+        <input type='submit' className="momadbtn" value='تحديث'
+        style={{cursor:'pointer',width:'100%',float:'',backgroundColor:'#363636'}}
+        />
+
+      </form>
+      </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    </Fragment>
+     
+  );
+};
+
+EditProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired
+};
+ 
+const mapStateToProps = state => ({
+  profile: state.profile
+});
+
+export default connect(
+  mapStateToProps,
+  { createProfile, getCurrentProfile }
+)(withRouter(EditProfile));
+ 

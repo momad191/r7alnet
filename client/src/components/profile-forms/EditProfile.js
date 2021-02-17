@@ -8,7 +8,7 @@ import Linkedin1 from './logos/Linkedin1.png';
 import stackoverflow1 from './logos/stackoverflow1.jpg';
 import researchgate1 from './logos/rpic.jpg';
 import orcid1 from './logos/orcid1.png';
-
+ 
 
 const EditProfile = ({
   profile: { profile, loading },
@@ -639,7 +639,7 @@ const EditProfile = ({
    
 
             <div className='form-group social-input '>
-
+ 
             {/* <img src={orcid1} width="30px" height="30px" alt="logo"/> */}
             <i className='fab fa-orcid fa-2x' />
               <input
@@ -691,7 +691,7 @@ EditProfile.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
 };
-
+ 
 const mapStateToProps = state => ({
   profile: state.profile
 });

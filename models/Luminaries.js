@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+  
 const LuminariesSchema = new Schema({
     _id: mongoose.Schema.Types.ObjectId,
     user: {

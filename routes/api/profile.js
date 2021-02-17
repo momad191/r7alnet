@@ -28,7 +28,7 @@ router.route('/pro/:id').get((req, res) => {
 });
 
 //----------------------------------------
-
+  
 router.get('/show', async (req, res) => {
   try {
     const profiles = await Profile.find()
@@ -40,9 +40,9 @@ router.get('/show', async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+ 
 
-
-
+ 
 
 
 
@@ -70,9 +70,9 @@ router.route('/update/:id').post((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
  
-
+  
 //-----------------------------------------------------
-
+  
 
 router.get('/me', auth, async (req, res) => {
   try {
@@ -91,7 +91,7 @@ router.get('/me', auth, async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
-
+  
 // @route    POST api/profile
 // @desc     Create or update user profile
 // @access   Private
@@ -99,14 +99,14 @@ router.post(
   '/',
   [
     auth,
-    [
-      check('status', 'Status is required')
-        .not()
-        .isEmpty(),
-      check('skills', 'Skills is required')
-        .not()
-        .isEmpty()
-    ]
+    // [
+    //   check('status', 'Status is required')
+    //     .not()
+    //     .isEmpty(),
+    //   check('skills', 'Skills is required')
+    //     .not()
+    //     .isEmpty()
+    // ]
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -159,7 +159,7 @@ router.post(
     if (researchgate) profileFields.social.researchgate = researchgate;
     if (orcid) profileFields.social.orcid = orcid;
     if (website) profileFields.social.website = website;
-     
+      
 
     try {
       // Using upsert option (creates new doc if no match is found):
@@ -195,7 +195,7 @@ router.get('/', auth, async (req, res) => {
 // @desc     Get profile by user ID
 // @access   Public
 router.get('/user/:user_id', async (req, res) => {
-  try {
+  try { 
     const profile = await Profile.findOne({
       user: req.params.user_id
     }).populate('user', ['name', 'avatar']);

@@ -1,6 +1,7 @@
 import { ADD_Luminaries,GET_Luminaries, GET_ERRORS,EDIT_Luminaries } from './types';
 import axios from 'axios';
 import { setAlert } from './alert';
+import { Link } from 'react-router-dom';
  
     
 //ADD Luminaries
@@ -22,6 +23,8 @@ export const addLuminaries = formData => async dispatch => {
   
       dispatch(setAlert('Luminaries Created', 'success'));
       window.location = '/showLuminaries';
+      
+      
     } catch (err) {
       dispatch({
         type: GET_ERRORS,
@@ -58,11 +61,11 @@ export const getAllWebinars = () => async dispatch => {
 //ADD Luminaries
 export const EditLuminaries = formData => async dispatch => {
   const config = {
-    headers: {
+    headers: { 
       'Content-Type': 'application/json'
     }
   };
- 
+     
   try {
     const res = await axios.post('/api/Luminaries/update/'+ this.props.match.params.id, formData, config);
     dispatch({
@@ -77,6 +80,40 @@ export const EditLuminaries = formData => async dispatch => {
     dispatch({
       type: GET_ERRORS,
       payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+
+    
+};
+ 
+ 
+
+// ------------------------------------------------------------------
+
+//EditUser
+export const editUserImage = (id, formData) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+      
+  try {
+    const res = await axios.post(`/api/users/EdituserImg/${id}`, formData, config);
+    //const res = await axios.post('/api/EdituserImg/update/'+ this.props.match.params.id, formData, config);
+ 
+    dispatch({
+      type: EDIT_Luminaries,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('Luminaries Edited', 'success'));
+    window.location = '/Allluminaries';
+    
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+     // payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
 

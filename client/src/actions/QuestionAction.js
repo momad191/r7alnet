@@ -10,11 +10,11 @@ import {
   ADD_COMMENT,
   REMOVE_COMMENT
 } from './types';
-  
+   
 // Get posts
 export const getPosts = () => async dispatch => {
   try {
-    const res = await axios.get('/api/questions');
+    const res = await axios.get('/api/categories');
 
     dispatch({
       type: GET_POSTS,
@@ -31,7 +31,7 @@ export const getPosts = () => async dispatch => {
 // Add like
 export const addLike = id => async dispatch => {
   try {
-    const res = await axios.put(`/api/questions/like/${id}`);
+    const res = await axios.put(`/api/categories/like/${id}`);
 
     dispatch({
       type: UPDATE_LIKES,
@@ -48,7 +48,7 @@ export const addLike = id => async dispatch => {
 // Remove like
 export const removeLike = id => async dispatch => {
   try {
-    const res = await axios.put(`/api/questions/unlike/${id}`);
+    const res = await axios.put(`/api/categories/unlike/${id}`);
 
     dispatch({
       type: UPDATE_LIKES,
@@ -65,14 +65,14 @@ export const removeLike = id => async dispatch => {
 // Delete post
 export const deletePost = id => async dispatch => {
   try {
-    await axios.delete(`/api/questions/${id}`);
-
+    await axios.delete(`/api/categories/${id}`);
+  
     dispatch({
       type: DELETE_POST,
       payload: id
     });
-   
-    dispatch(setAlert('Question Removed', 'danger'));
+    
+    dispatch(setAlert('category Removed', 'danger'));
     
   } catch (err) {
     dispatch({
@@ -91,15 +91,15 @@ export const addPost = formData => async dispatch => {
   };
   
   try {
-    const res = await axios.post('/api/questions', formData, config);
+    const res = await axios.post('/api/categories', formData, config);
 
     dispatch({
       type: ADD_POST,
       payload: res.data
     });
  
-    dispatch(setAlert('Question Created', 'success'));
-    window.location = '/questions';
+    dispatch(setAlert('category Created', 'success'));
+    window.location = '/categories';
     
 
   } catch (err) {
@@ -114,7 +114,7 @@ export const addPost = formData => async dispatch => {
 // Get post
 export const getPost = id => async dispatch => {
   try {
-    const res = await axios.get(`/api/questions/${id}`);
+    const res = await axios.get(`/api/categories/${id}`);
 
     dispatch({
       type: GET_POST,
@@ -138,7 +138,7 @@ export const addComment = (postId, formData) => async dispatch => {
 
   try {
     const res = await axios.post(
-      `/api/questions/comment/${postId}`,
+      `/api/categories/comment/${postId}`,
       formData,
       config
     );
@@ -156,11 +156,11 @@ export const addComment = (postId, formData) => async dispatch => {
     });
   }
 };
-
+ 
 // Delete comment
 export const deleteComment = (postId, commentId) => async dispatch => {
   try {
-    await axios.delete(`/api/questions/comment/${postId}/${commentId}`);
+    await axios.delete(`/api/categories/comment/${postId}/${commentId}`);
 
     dispatch({
       type: REMOVE_COMMENT,

@@ -19,7 +19,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
           <h1 class="middle text-primary"><i class="fas fa-star"></i>  Members</h1>
           <h1 style={{fontSize:'15px' , fontWeight:'Bold', color:'#000'}}>Browse and connect with
             Members</h1>
-          
+           
             {profiles.length > 0 ? (
               profiles.map(profile => (
                 <ProfileItem key={profile._id} profile={profile} />

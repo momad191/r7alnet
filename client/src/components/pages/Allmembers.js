@@ -4,7 +4,7 @@ import Pagination from './Pagination';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './App.css';
-     
+       
 const ListMy = () => {
 
   const [posts, setPosts] = useState([]);
@@ -17,7 +17,7 @@ const ListMy = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
-      const res = await axios.get(`/api/profile/`);
+      const res = await axios.get(`/api/users/`);
       setPosts(res.data);
       setLoading(false);
     };

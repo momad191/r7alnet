@@ -20,7 +20,7 @@ export const loadUser = () => async dispatch => {
 
   try {
     const res = await axios.get('/api/auth');
-
+ 
     dispatch({
       type: USER_LOADED,
       payload: res.data
@@ -44,6 +44,40 @@ export const register = ({ name, email, password }) => async dispatch => {
 
   try {
     const res = await axios.post('/api/users', body, config);
+
+    dispatch({
+      type: REGISTER_SUCCESS,
+      payload: res.data
+    });
+
+    dispatch(loadUser());
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    }
+
+    dispatch({
+      type: REGISTER_FAIL
+    });
+  }
+};
+
+  
+
+// Register User
+export const registerByrefUser = ({ name, email, password,refuser,counrty }) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  const body = JSON.stringify({ name, email, password,refuser,counrty  });
+
+  try {
+    const res = await axios.post('/api/users/refuser', body, config);
 
     dispatch({
       type: REGISTER_SUCCESS,
@@ -135,4 +169,39 @@ export const reset = ({ email }) => async dispatch => {
       type: REGISTER_FAIL
     });
   }
+};
+
+
+
+
+// ------------------------------------------------------------------
+
+//EditUser
+export const editUserImage = (id, formData) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+      
+  try {
+   // const res = await axios.post(`/api/users/EdituserImg/${id}`, formData, config);
+    const res = await axios.post('/api/EdituserImg/update/'+ this.props.match.params.id, formData, config);
+ 
+    dispatch({
+      type:  REGISTER_SUCCESS,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('user Edited', 'success'));
+    window.location = '/Allluminaries';
+    
+  } catch (err) {
+    dispatch({
+      type: LOGIN_FAIL,
+     // payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+
+    
 };

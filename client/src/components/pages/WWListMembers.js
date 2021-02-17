@@ -45,9 +45,9 @@ const Posts = ({ posts, loading }) => {
             <tr>
               <th style={thStyle}>Picture</th>
               <th style={thStyle}>Name</th>
-              <th style={thStyle}>Country</th>
+              {/* <th style={thStyle}>Country</th>
               <th style={thStyle}>Specialization</th>
-              <th style={thStyle}>Work Place</th>
+              <th style={thStyle}>Work Place</th> */}
               <th style={thStyle}>Date</th>
               <th colspan="3" style={thStyle}>Action</th>
             </tr>
@@ -61,19 +61,17 @@ const Posts = ({ posts, loading }) => {
 
 
     <tr >
-    <td style={tdStyle}><Link to={"/EdituserImg/"+pd.user._id}><img src={pd.user.avatar} width='100' height='55' alt="" /></Link></td>
-    <td style={tdStyle}>{pd.user.name}</td>
-    <td style={tdStyle}>{pd.location}</td>
-    <td style={tdStyle}>{pd.department}</td>
-    <td style={tdStyle}>{pd.company}</td>
+    <td style={tdStyle}><Link to={"/Edituser/"+pd._id}><img src={pd.avatar} width='100' height='55' alt="" /></Link></td>
+    <td style={tdStyle}>{pd.name}</td>
+   
     <td style={tdStyle}><Moment format='YYYY/MM/DD'>{pd.date}</Moment></td>
 
     <td style={tdStyle}>
-        <Link to={"/Edituser/"+pd.user._id} className="hide-sm text-dark">Update name and Email </Link>  
+        <Link to={"/Edituser/"+pd._id} className="hide-sm text-dark">Update name and Email </Link>  
       </td>
 
       <td style={tdStyle}>
-        <Link to={"/EditProfileInfo/user/"+pd._id} className="hide-sm text-dark">Update profile </Link>  
+        <Link to={"/Edituser/"+pd._id} className="hide-sm text-dark">Update profile </Link>  
       </td>
 
       

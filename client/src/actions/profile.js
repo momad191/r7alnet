@@ -12,10 +12,11 @@ import {
 } from './types';
 
 // Get current users profile
-export const getCurrentProfile = () => async dispatch => {
+export const getCurrentProfile = id => async dispatch => {
   try {
-    const res = await axios.get('/api/profile/me');
-
+   // const res = await axios.get('/api/profile/me');
+    const res = await axios.get(`/api/users/${id}`);
+   
     dispatch({
       type: GET_PROFILE,
       payload: res.data
@@ -31,7 +32,7 @@ export const getCurrentProfile = () => async dispatch => {
 // Get all profiles
 export const getProfiles = () => async dispatch => {
   dispatch({ type: CLEAR_PROFILE });
-
+  
   try {
     const res = await axios.get('/api/profile');
  
@@ -80,11 +81,11 @@ export const getGithubRepos = username => async dispatch => {
     });
   }
 };
-
-// Create or update profile
+ 
+ // Create or update profile
 export const createProfile = (
   formData,
-  history,
+ // history,
    user ,
   edit = false
 ) => async dispatch => {
@@ -94,20 +95,22 @@ export const createProfile = (
         'Content-Type': 'application/json'
       }
     };
-
-    const res = await axios.post('/api/profile', formData, config);
+  
+    const res = await axios.post('/api/users/edituser1', formData, config);
 
     dispatch({
       type: GET_PROFILE,
       payload: res.data
     });
- 
-    dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success'));
- 
-    if (!edit) {
-      history.push('/imgcontroll');
+   
+   
     
-    }
+    dispatch(setAlert(edit ? 'تم تحديث الملف' : 'تم تحديث الملف', 'success'));
+     window.location='/'
+    // if (!edit) {
+    //   history.push('/dashboard');
+    
+    // }
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -279,3 +282,66 @@ export const addSpost = (formData, history) => async dispatch => {
     });
   }
 };
+
+// -------------------------------------------------------
+
+
+// Create or update user
+export const createUser = (
+  formData,
+  history,
+   user ,
+  edit = true
+) => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    const res = await axios.post('/api/users/edituser', formData, config);
+ 
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data
+    });
+ 
+    dispatch(setAlert(edit ? 'User Updated' : 'User Created', 'success'));
+ 
+    if (!edit) {
+      history.push('/imgcontroll');
+    
+    }
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    }
+
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+ 
+// Get current users profile
+export const getCurrentUser = () => async dispatch => {
+  try {
+    const res = await axios.get('/api/users/me');
+
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+}; 
+ 

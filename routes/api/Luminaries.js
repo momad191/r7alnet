@@ -70,6 +70,7 @@ router.post('/', upload.single('L_Img'),async(req, res, next) => {
     //const url = req.protocol + '://' + req.get('host')
     //const url = 'https://s-rf-heroku.herokuapp.com'
     // const url = 'https://s-rf-heroku.herokuapp.com'
+    //const user = await User.findById(req.user.id).select('-password');
 
       // Upload image to clou dinary
     const result = await cloudinary.uploader.upload(req.file.path);
@@ -85,7 +86,7 @@ router.post('/', upload.single('L_Img'),async(req, res, next) => {
         L_date: req.body.L_date,
         L_Website: req.body.L_Website,
         L_biography: req.body.L_biography
-
+ 
     });
     luminaries.save().then(result => {
         res.status(201).json({
@@ -177,6 +178,6 @@ router.route('/update/:id').post((req, res) => {
       .catch(err => res.status(400).json('Error: ' + err));
   });
  
-
+ 
 
 module.exports = router;

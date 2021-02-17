@@ -6,91 +6,87 @@ import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../actions/post';
 import ConfirmButton from "./ConfirmButton";
 import "./styles.css";
+
+    
      
 const PostItem = ({
   addLike,
   removeLike, 
   deletePost,
   auth,
-  post: { _id, title_article,title_journal,volume,pages,DOI,ISSN, name, avatar, user, likes, comments, date,URL },
+  
+  post: { _id, title,Publish,CategoryName,Categoryid,SubName,Subid,video,Keywords,short, Main_paragraph,image,name, avatar, user, likes, comments, date},
   showActions
 }) => 
  
- 
+  
   // !auth.loading && user === auth.user._id && 
   (
   <Fragment>
-  <div style={{border:"1px solid #000" , backgroundColor:"#E0E3E5"}} className='post bg-white p-1 my-1'>
-    <div>
-      <Link to={`/profile/${user}`}>
-        <img className='round-img' src={avatar} alt='' />
-        <h4 style={{ color:"#000" , fontSize:"15px", fontWeight:'bold'}} >{name}</h4>
-      </Link>
-    </div>
-    <div>
-      
- 
-      <Link to={`/posts/${_id}`} >  
-      <p style={{color:"#000",fontSize:"19px" ,fontWeight:'bold'}} className='my-1'>
-        <span style={{color:"#0D33B6",fontSize:"15px" ,fontWeight:'bold'}}>Article Title:</span>{title_article}</p>
-      </Link>
+  
+  <thead class=" text-primary">
+  <th class="text-right" style={{fontFamily:'Changa',color:'#000',backgroundColor:'#424242',fontWeight:'bold',float:'',fontSize:'11px'}}>  </th>
 
-      <Link to={`/posts/${_id}`} >
-      <p style={{color:"#000",fontSize:"19px" ,fontWeight:'bold'}} className='my-1'>
-        <span style={{color:"#0D33B6",fontSize:"15px",fontWeight:'bold'}}>Journal Title:</span>{title_journal}</p>
-      </Link>
- 
+   <th class="text-right" style={{fontFamily:'Changa',color:'#000',backgroundColor:'#424242',fontWeight:'bold',float:'',fontSize:'11px'}}>  </th>
+   <th class="text-right" style={{fontFamily:'Changa',color:'#000',backgroundColor:'#424242',fontWeight:'bold',float:'',fontSize:'11px'}}>  </th>
+   <th class="text-right" style={{fontFamily:'Changa',color:'#000',backgroundColor:'#424242',fontWeight:'bold',float:'',fontSize:'11px'}}>  </th>
+  <th class="text-right" style={{fontFamily:'Changa',color:'#000',backgroundColor:'#424242',fontWeight:'bold',float:'',fontSize:'11px'}}>  </th>
+  <th class="text-right" style={{fontFamily:'Changa',color:'#fff',backgroundColor:'#424242',fontWeight:'bold',float:'',fontSize:'11px'}}>التاريخ</th>
+  <th class="text-right" style={{fontFamily:'Changa',color:'#fff',backgroundColor:'#424242',fontWeight:'bold',float:'',fontSize:'11px'}}>المستخدم  </th>
+  <th class="text-right" style={{fontFamily:'Changa',color:'#fff',backgroundColor:'#424242',fontWeight:'bold',float:'',fontSize:'11px'}}>	حالة  </th>
+  <th class="text-right" style={{fontFamily:'Changa',color:'#fff',backgroundColor:'#424242',fontWeight:'bold',float:'',fontSize:'11px'}}>التصنيف الفرعي</th>
+  <th class="text-right" style={{fontFamily:'Changa',color:'#fff',backgroundColor:'#424242',fontWeight:'bold',float:'',fontSize:'11px'}}>التصنيف الاساسي</th>
+  <th class="text-right" style={{fontFamily:'Changa',color:'#fff',backgroundColor:'#424242',fontWeight:'bold',float:'',fontSize:'11px'}}>عنوان الخبر   </th>
+  <th class="text-right" style={{fontFamily:'Changa', color:'#000',backgroundColor:'#424242',fontWeight:'bold',float:'',fontSize:'11px'}}> </th>                       
+ </thead>
 
-      <a href={URL} >
-      {/* <p style={{color:"#000",fontSize:"19px" ,fontWeight:'bold'}} className='my-1'>
-      <span style={{color:"#0D33B6",fontSize:"15px",fontWeight:'bold'}}>URL:</span>{URL}</p> */}
-      <p style={{color:"#000",fontSize:"19px" ,fontWeight:'bold'}} className='my-1'>
-      <span style={{color:"#0D33B6",fontSize:"15px",fontWeight:'bold'}}>URL:</span>Link</p>
-      </a>
+  <tbody style={{borderBottom:'#000'}}>
 
+   <tr>
 
- 
-      <Fragment>
-      <p style={{color:"#000",fontSize:"19px" ,fontWeight:'bold'}} className='my-1'>
+    <td>
 
-        <span style={{color:"#0D33B6",fontSize:"15px",fontWeight:'bold'}}>Volume:</span>{volume} &nbsp;&nbsp; 
-        <span style={{color:"#0D33B6",fontSize:"15px",fontWeight:'bold'}}>Pages:</span>{pages} &nbsp;&nbsp;
-        <span style={{color:"#0D33B6",fontSize:"15px",fontWeight:'bold'}}>DOI:</span>{DOI} &nbsp;&nbsp;
-        <span style={{color:"#0D33B6",fontSize:"15px",fontWeight:'bold'}}>ISSN:</span>{ISSN}
-        </p>
-
-
-        </Fragment>
-
-
-      <p  style={{ color:"#000" , fontSize:"13px", fontWeight:'bold'}} className='post-date '>
-        Posted on <Moment  format='YYYY/MM/DD'>{date}</Moment>
-      </p>
-     
-      {showActions && (
-        <Fragment>
-          <button
+      {/* <Link
             onClick={() => addLike(_id)}
+            
             type='button'
-            className='btn btn-light'
-          >
-            <i className='fas fa-thumbs-up' />{' '}
-            <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
-          </button>
-          <button
+          
+            style={{ padding:'4px 10px', cursor: '' ,color:'#000',backgroundColor:'#cacaca',fontWeight:'bold',fontSize:'19px',fontFamily:'',textAlign:'center', marginTop:'5px' ,borderColor:'#cacaca',borderRadius:'8%',marginLeft:''}}
+
+          >  
+            <i  style={{fontSize:'20px'}} className='far fa-grin-alt'/>  
+           
+           {likes.length > 0 && (
+             <span className='comment-count'>{likes.length}</span>
+           )}
+           <i className='fas fa-thumbs-down' /> 
+
+       </Link> */}
+
+          {/* <Link
             onClick={() => removeLike(_id)}
             type='button'
-            className='btn btn-light'
-          > 
-            <i className='fas fa-thumbs-down' />
-          </button>
-          <Link to={`/posts/${_id}`} className='btn btn-primary'>
-            Discussion{' '}
-            {comments.length > 0 && (
-              <span className='comment-count'>{comments.length}</span>
-            )}
-          </Link>
-          {!auth.loading && user === auth.user._id && (
+          
+            style={{ padding:'4px 10px', cursor: '' ,color:'#000',backgroundColor:'#cacaca',fontWeight:'bold',fontSize:'19px',fontFamily:'',textAlign:'center', marginTop:'5px' ,borderColor:'#cacaca',borderRadius:'8%',marginLeft:''}}
+
+          >  
+           <i  style={{fontSize:'20px'}} className='fa fa-frown'/>
+            <i className='fas fa-thumbs-down' /> 
+        </Link>  */}
+            
+
+
+      </td>  
+      
+  
+     
+    
+      
+   <td>
+     
+       {
+ 
+      //  !auth.loading && user === auth.user._id && (
             // <button
             //   onClick={() => deletePost(_id)}
             //   type='button'
@@ -100,19 +96,60 @@ const PostItem = ({
             // </button>
  
             <ConfirmButton
-            dialog={["Delete", "Are You Sure?", "Once more to delete"]}
+            dialog={["", "Are You Sure?", "Once more to delete"]}
             action={() => deletePost(_id)}
-            />
+              />
 
-          )}
+          // )
+          }
+ 
+           </td>
+
+
+
           
-        </Fragment>
-      )}
-     
-    </div>
-  </div>
 
-  
+     <td>
+<a href={`/AllCompetitions/${_id}`} className='btn btn-primary fontnty-font'
+         style={{backgroundColor:'#8A0868', color:'#fff',fontWeight:'bold',float:'',fontSize:'14px'}}
+           >
+          <i className='fas fa-list' /> عرض الاسئلة 
+          </a>
+
+</td>
+
+
+<td>
+          <a href={`/addCompetition/${_id}`} className='btn btn-primary fontnty-font'
+         style={{backgroundColor:'#8A0868', color:'#fff',fontWeight:'bold',float:'',fontSize:'14px'}}
+           >
+          <i className='fas fa-plus' /> السؤال 
+          </a>
+
+     </td>
+          
+
+           <td>
+
+     <Link to={`/editPost/${_id}`} className='btn btn-primary fontnty-font'
+      style={{color:'#fff',fontWeight:'bold',float:'',fontSize:'14px'}}
+      
+      >
+      <i className='fas fa-edit' /> التعديل 
+      </Link>
+     </td>
+   
+ <td><p style={{ fontFamily:'Changa' ,color:"#000" , fontSize:"13px", fontWeight:'bold'}} className='post-date '>   <Moment  format='YYYY/MM/DD'>{date}</Moment> </p></td>
+ <td><p  style={{ fontFamily:'Changa' ,color:"#31B404" , fontSize:"13px", fontWeight:'bold'}}  > {name}</p></td>
+ <td><p  style={{ fontFamily:'Changa' ,color:"#000" , fontSize:"13px", fontWeight:'bold'}}  > {Publish}</p></td>
+ <td><p  style={{ fontFamily:'Changa' ,color:"#B40486" , fontSize:"13px", fontWeight:'bold'}} className='post-date '> {SubName}</p></td>
+ <td><p  style={{ fontFamily:'Changa' ,color:"#B40486" , fontSize:"13px", fontWeight:'bold'}} className='post-date '> {CategoryName}</p></td>
+ <td>   <h5  ><Link to={`/posts/${_id}`} style={{fontFamily:'Changa' , fontSize:"13px", fontWeight:'bold',color:'#0101DF'}}>  {title}  </Link></h5> </td>
+ <td> <div class="portfolio-img"> <Link to={`/posts/${_id}`}> <img style={{width:'120px',height:'80px'}} alt="" src={image}/></Link></div>                    
+  </td>
+  </tr> 
+   </tbody>
+
 </Fragment>
    
    )

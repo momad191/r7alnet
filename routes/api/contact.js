@@ -29,19 +29,19 @@ router.get('/', auth, async (req, res) => {
 router.post(
   '/',
   [
-      check('name', 'Name is required').not().isEmpty(),
-      check('channel', 'channel is required').not().isEmpty(),
-      check('subject', 'subject is required').not().isEmpty(),
-      check('msg', 'msg is required').not().isEmpty(),
+      // check('name', 'Name is required').not().isEmpty(),
+      // check('channel', 'channel is required').not().isEmpty(),
+      // check('subject', 'subject is required').not().isEmpty(),
+      // check('msg', 'msg is required').not().isEmpty(),
       check('email', 'Please include a valid email').isEmail(),
-  ],
+  ], 
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, channel, subject, msg } = req.body;
+    const { email } = req.body;
 
     try {
     //  let user = await User.findOne({ email });
@@ -59,11 +59,8 @@ router.post(
       // });
 
       contact = new Contact({
-        name,
         email,
-        channel,
-        subject,
-        msg
+       
       });
 
     //  const salt = await bcrypt.genSalt(10);

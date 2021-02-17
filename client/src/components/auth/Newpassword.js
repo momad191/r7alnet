@@ -109,35 +109,63 @@ export default class Editwebinars extends Component {
     axios.post('/api/auth/new-password/'+this.props.match.params.id, user)
     .then(res => console.log(res.data));
 
-   window.location = '/dashboard';
+   window.location = '/';
   }
  
   render() {
     return (
- 
- 
-      <div className="form-container">
-      <form className="form" encType="multipart/form-data" onSubmit={this.onSubmit}> 
-   
-      
-      <h1 className="middle text-primary"><i className="fas fa-star"></i> New password  </h1>	 
-   
-      
-      
-   
-   
-   
-      <div className="form-group">
-      <label className="form-label">Email</label>
-      <input  className="form-contact" placeholder="" type="text"value={this.state.email} onChange={this.onChangeemail} required disabled/>
-      </div>
-   
- 
 
-      <div className="form-group">
-      <label className="form-label">Enter New Password</label>
-      <input  className="form-contact" placeholder="" type="password" value={this.state.password} onChange={this.onChangepassword} required/>
-      </div>
+
+      <Fragment>
+       
+    
+       
+      <section id="login-reg" >
+              
+              <div class="row">
+                 
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                     <div class="form-box">
+                         <div class="form-top" style={{backgroundColor:'#363636'}}>
+                             <div class="form-top-left">
+                                  
+                             </div>
+                             <div class="form-top-right">
+                             كلمة المرور الجديدة <i class="fa fa-key"></i>
+                             </div>
+                         </div> 
+
+          <div class="form-bottom"  style={{backgroundColor:'#58ACFA'}}>
+        <form role="form" action="" class="login-form"  encType="multipart/form-data" onSubmit={this.onSubmit}>
+
+
+ 
+                            <div class="input-group form-group">
+
+                               <input type="text" class="form-control" placeholder=" البريد الالكتروني" aria-describedby="basic-addon1" autocomplete="off"
+                                name='name'
+                                value={this.state.email}
+                                onChange={this.onChangeemail}
+                                style={{color:'#000',fontWeight:'bold',float:'right',direction:'rtl'}}
+                                required
+                             />
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
+                           </div>
+
+
+                           
+                           <div class="input-group form-group">
+                          <input type="password" class="form-control" placeholder=" كلمة المرور " aria-describedby="basic-addon1" autocomplete="off"
+                          name='name'
+                          value={this.state.password}
+                          onChange={this.onChangepassword}
+                          style={{color:'#000',fontWeight:'bold',float:'right',direction:'rtl'}}
+                          required
+                          />
+                          <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
+                          </div>
+    
+  
 
 
       <div className="form-group">
@@ -145,36 +173,20 @@ export default class Editwebinars extends Component {
       <input  className="form-contact" placeholder="" type="hidden" value={this.state.resetToken} onChange={this.onChangeresetToken} required/>
       </div>
  
-
-{/* 
-        <div className="form-group">
-      <span> Date </span>
-            <input type="date"   name="name"  value={this.state.L_date} onChange={this.onChangeL_date}  />
-        </div>
-        <div className="form-group">
-        <Moment format='YYYY/MM/DD'>{this.state.date}</Moment>
-        </div> */}
+ 
+      <button style={{backgroundColor:'#363636'}} type="submit" class="momadbtn">أرسل</button>
 
 
 
-    
-   
-   {/* <div className="form-group">
-      <label className="form-label"> Image  </label>
-     <input type="file"
-     className="form-input"
-      
-     onChange={this.onChangeL_Img}  />
-   </div> */}
-
-   {/* <img width="200" height="120" src= {this.state.avatar} alt=" avatar" /> */}
-  
-   
-   <div className="form-group">
-     <button style={{width :'500px' , height:'50px', background:'#257E83', color:'#fff', cursor:'pointer' }}  type="submit" className="submit-btn">save</button>
-     </div>
      </form>
      </div>
+     </div>
+     </div>
+     </div>
+     </section>
+     
+     </Fragment>
+
 
     )
   }

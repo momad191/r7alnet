@@ -7,7 +7,7 @@ import Moment from 'react-moment';
 export default class Editwebinars extends Component {
   constructor(props) {
     super(props);
-     
+      
 
     //this.onChangeL_Img = this.onChangeL_Img.bind(this);
     this.onChangeL_name = this.onChangeL_name.bind(this);

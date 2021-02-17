@@ -24,10 +24,21 @@ const UserSchema = new mongoose.Schema({
     default: "no uploaded cv"
      
   },
+  refuser: {
+    type: String,
+    default: "system"
+     
+  },
+  country: {
+    type: String,
+    
+      
+  },
   validity: {
     type: String,
     default: "normal"
   }, 
+  
   date: {
     type: Date,
     default: Date.now

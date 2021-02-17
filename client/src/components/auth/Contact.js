@@ -47,80 +47,90 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Contact Us</h1>
-      <p className='lead'>
-        <i className='fas fa-mobile' /> Get in touch
-      </p>
- 
-      <form className='form' onSubmit={e => onSubmit(e)}>
 
-        <div className='form-group'>Name
-          <input
-            type='text'
-            placeholder=''
-            name='name'
-            value={name}
-            onChange={e => onChange(e)}
-          />
-        </div>
-        <div className='form-group'>Email
-          <input
-            type='email'
-            placeholder=''
-            name='email'
-            value={email}
-            onChange={e => onChange(e)}
-          />
-           
-        </div>
-
-
-        <div className='form-group'>channel
-          <select
-            type='select'
-            placeholder=''
-            name='channel'
-            value={channel}
-            onChange={e => onChange(e)}
-          >
-          <option>Select contact channel</option>
-          <option>General inquiries</option>
-          <option>become SRF partner</option>
-          <option>Relation Team</option>
-          <option>Tech Geeks</option>
-          <option>Mentoring</option>
-          </select>
-
-        </div>
-
-
-
-        <div className='form-group'>subject
-          <input
-            type='text'
-            placeholder=''
-            name='subject'
-            value={subject}
-            onChange={e => onChange(e)}
-          />
-        </div>
-
-        <div className='form-group'>msg
-          <textarea
-            type='textarea'
-            placeholder=''
-            name='msg'
-            value={msg}
-            onChange={e => onChange(e)}
-          />
-        </div>
-
-
-         
+  
+<section id="login-reg" >
         
-        <input type='submit' className='btn btn-primary' value='Send' />
-      </form>
-       
+        <div class="row">
+           
+            <div class="col-lg-12 col-md-12 col-sm-12">
+               <div class="form-box">
+                   <div class="form-top">
+                       <div class="form-top-left">
+                          
+                       </div>
+                       <div class="form-top-right">
+                       اتصل بنا <i class="fa fa-phone"></i>   
+                       </div>
+
+                       
+
+                   </div>
+                   <div class="form-bottom">
+                       <form role="form" action="" class="login-form">
+                            
+                       <div class="input-group form-group">
+                               
+                               <input type="text" class="form-control" placeholder="الاسم الاول" aria-describedby="basic-addon1"/>
+             <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
+                           </div>
+
+                           <div class="input-group form-group">
+                               
+                               <input type="text" class="form-control" placeholder="الاسم الثاني " aria-describedby="basic-addon1"/>
+             <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
+                           </div>
+
+
+                           <div class="input-group form-group">
+                               
+                               <input type="text" class="form-control" placeholder="البريد الالكتروني" aria-describedby="basic-addon1"/>
+             <span class="input-group-addon" id="basic-addon1"><i class="fa fa-envelope"></i></span>
+                           </div>
+
+                           <div class="input-group form-group">
+                               
+                               <input type="number" class="form-control" placeholder="الهاتف" aria-describedby="basic-addon1"/>
+             <span class="input-group-addon" id="basic-addon1"><i class="fa fa-phone"></i></span>
+                           </div>
+
+                           <div class="input-group form-group">
+                               
+                               <input type="text" class="form-control" placeholder="عنوان الرسالة" aria-describedby="basic-addon1"/>
+             <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil"></i></span>
+                           </div>
+
+
+                           <div class="input-group form-group">
+                               
+                               <textarea type="text" class="form-control" placeholder="الرسالة" aria-describedby="basic-addon1" rows="5"/>
+             <span class="input-group-addon" id="basic-addon1"><i class="fa fa-envelope"></i></span>
+                           </div>
+
+                            
+
+ 
+                        
+           
+                           <button type="submit" class="momadbtn">ارسل</button>
+                             
+                            
+                        </form>
+                      
+                   </div>
+               </div>
+
+           </div>
+           </div>
+        
+ 
+           
+
+</section>
+
+     
+ 
+     
     </Fragment>
   );
 };

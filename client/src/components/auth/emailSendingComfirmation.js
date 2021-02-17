@@ -93,29 +93,29 @@ export default class Editwebinars extends Component {
   render() {
     return (
  
- 
-      <div className="form-container">
-    
-      
-<br></br>
-<h1 className="middle text-primary"><i className="fas fa-square"></i> Email Has been Sent | Chek Your Email Now </h1>	  
+  
+      <section id="login-reg" >
+              
+      <div class="row">
+         
+          <div class="col-lg-12 col-md-12 col-sm-12">
+             <div class="form-box">
+                 <div class="form-top" style={{backgroundColor:'#58ACFA'}}>
+                     <div class="form-top-left">
+                          
+                     </div>
+                     <div class="form-top-right" style={{color:'#000',fontWeight:'bold',textAlign:'center',fontSize:'15px'}} >
+                     تم إرسال الرسالة إلى بريدك الالكتروني يرجى التحقق من صندوق الوارد <i class="fa fa-"></i>
+                     </div>
+                 </div> 
 
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-        </div>
+
+                 </div> 
+                 </div> 
+                 </div> 
+                 </section> 
+
+
 
     )
   }

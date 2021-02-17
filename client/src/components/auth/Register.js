@@ -12,9 +12,10 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     password: '',
     password2: '',
     validity:'',
+   
   });
-
-  const { validity,name, email, password, password2  } = formData;
+  
+  const { validity,name, email, password, password2 , location,cv } = formData;
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,84 +25,137 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     if (password !== password2) {
       setAlert('Passwords do not match', 'danger');
     } else {
-      register({ name, email, password, validity });
+      register({ name, email, password, validity,location, cv });
     }
   };
 
   if (isAuthenticated) {
-    return <Redirect to='/dashboard' />;
+    return <Redirect to='/' />;
   }
  
   return (
     <Fragment>
-      
-      <h1 className='large text-primary'>Sign Up</h1>
-      <p className='lead'>
-        <i className='fas fa-user' /> Create Your Account
-      </p>
-      <form className='form' onSubmit={e => onSubmit(e)}>
-        <div className='form-group'>
-          <input
-           style={{width:'50%'}}
-            type='text'
-            placeholder='Name'
-            name='name'
-            value={name}
-            onChange={e => onChange(e)}
-          />
-        </div>
-        <div className='form-group'>
-          <input
-           style={{width:'50%'}}
-            type='email'
-            placeholder='Email Address'
-            name='email'
-            value={email}
-            onChange={e => onChange(e)}
-          />
-          <small className='form-text'>
-            This site uses Gravatar so if you want a profile image, use a
-            Gravatar email
-          </small>
-        </div>
-        <div className='form-group'>
-          <input
-           style={{width:'50%'}}
-            type='password'
-            placeholder='Password'
-            name='password'
-            value={password}
-            onChange={e => onChange(e)}
-          />
-        </div>
-        <div className='form-group'>
-          <input
-           style={{width:'50%'}}
-            type='password'
-            placeholder='Confirm Password'
-            name='password2'
-            value={password2}
-            onChange={e => onChange(e)}
-          />
-        </div>
-        <div className='form-group'>
-          <input
-           style={{width:'50%'}}
-            type='hidden'
-            placeholder='validity'
-            name='validity'
-            value={validity}
-            onChange={e => onChange(e)}
-            
-          />
-        </div>
-
+       
+    
+       
+<section id="login-reg" >
         
-        <input type='submit' className='btn btn-primary' value='Register' />
-      </form>
-      <p className='my-1'>
-        Already have an account? <Link to='/login'>Sign In</Link>
-      </p>
+        <div class="row">
+           
+            <div class="col-lg-12 col-md-12 col-sm-12">
+               <div class="form-box">
+                   <div class="form-top" style={{backgroundColor:'#363636'}}>
+                       <div class="form-top-left">
+                            
+                       </div>
+                       <div class="form-top-right">
+                       إنشاء حساب <i class="fa fa-pencil"></i>
+                       </div>
+                   </div> 
+                   <div class="form-bottom"  style={{backgroundColor:'#58ACFA'}}>
+                       <form role="form" action="" class="login-form" onSubmit={e => onSubmit(e)}>
+
+                            
+                       <div class="input-group form-group">
+                               
+                               <input type="text" class="form-control" placeholder=" الاسم" aria-describedby="basic-addon1" autocomplete="off"
+                                name='name'
+                                value={name}
+                                onChange={e => onChange(e)}
+                                style={{color:'#000',fontWeight:'bold',float:'right',direction:'rtl'}}
+                               />
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
+                           </div>
+
+                           {/* <div class="input-group form-group">
+                               
+                               <input type="text" class="form-control" placeholder="الاسم الثاني " aria-describedby="basic-addon1"/>
+             <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
+                           </div> */}
+
+
+                           <div class="input-group form-group">
+                               
+                               <input type="text" class="form-control" placeholder="البريد الالكتروني" aria-describedby="basic-addon1" autocomplete="off"
+                                name='email'
+                                value={email}
+                                onChange={e => onChange(e)}
+                                style={{color:'#000',fontWeight:'bold',float:'right',direction:'rtl'}}
+                               />
+             <span class="input-group-addon" id="basic-addon1"><i class="fa fa-envelope"></i></span>
+                           </div>
+
+                           <div class="input-group form-group">
+                               
+                               <input type="password" class="form-control" placeholder="كلمة المرور" aria-describedby="basic-addon1" autocomplete="off"
+                               name='password'
+                               value={password}
+                               onChange={e => onChange(e)}
+                               style={{color:'#000',fontWeight:'bold',float:'right',direction:'rtl'}}
+                               />
+             <span class="input-group-addon" id="basic-addon1"><i class="fa fa-key"></i></span>
+                           </div>
+
+
+                           <div class="input-group form-group">
+                               
+                               <input type="password" class="form-control" placeholder="تأكيد كلمة المرور" aria-describedby="basic-addon1" autocomplete="off"
+                                name='password2'
+                                value={password2}
+                                onChange={e => onChange(e)}
+                                style={{color:'#000',fontWeight:'bold',float:'right',direction:'rtl'}}
+                               />
+                          <span class="input-group-addon" id="basic-addon1"><i class="fa fa-key"></i></span>
+                           </div>
+
+
+                           
+
+
+
+                           
+
+
+
+
+
+
+                           <div class="input-group form-group">
+                               
+                               <input type="hidden" class="form-control" placeholder="الصلاحية" aria-describedby="basic-addon1"
+                               name='validity'
+                               value={validity}
+                               onChange={e => onChange(e)}
+                               style={{color:'#000',fontWeight:'bold',float:'right',direction:'rtl'}}
+                               />
+                            </div>
+ 
+        
+                        
+           
+                           <button style={{backgroundColor:'#363636'}} type="submit" class="momadbtn">إشترك</button>
+                           <a href="/login"><h3>تسجيل الدخول  </h3></a>
+                            
+                           <a href="/reset"><h3> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                  </h3></a>
+
+                                <a href="/reset" ><h3>شروط وأحكام   </h3></a>
+                            
+                        </form>
+                      
+                   </div>
+               </div>
+
+           </div>
+           </div>
+        
+
+           
+
+</section>
+
+     
     </Fragment>
   );
 };

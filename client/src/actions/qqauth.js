@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { ADD_CONTACT, GET_ERRORS } from './types';
+import { ADD_CONTACT, GET_ERRORS ,  ADD_MSG ,MSG_ERROR } from './types';
  
 //import setAuthToken from '../utils/setAuthToken';
  
@@ -23,7 +23,7 @@ import { ADD_CONTACT, GET_ERRORS } from './types';
 //     });
 //   }
 // };
-
+ 
 // Register User
 export const register = ({ name, email, channel , subject , msg, history }) => async dispatch => {
   const config = {
@@ -32,7 +32,7 @@ export const register = ({ name, email, channel , subject , msg, history }) => a
     }
   };
  
-  const body = JSON.stringify({ name, email, channel ,subject ,msg  });
+  const body = JSON.stringify({ name, email, channel ,subject ,msg });
 
   try {
     const res = await axios.post('/api/contact', body, config);
@@ -93,3 +93,34 @@ export const register = ({ name, email, channel , subject , msg, history }) => a
 //   dispatch({ type: CLEAR_PROFILE });
 //   dispatch({ type: LOGOUT });
 // };
+ 
+
+
+// Add post
+export const addPost = formData => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }; 
+  
+  try {
+    const res = await axios.post('/api/Msgs', formData, config);
+ 
+    dispatch({
+      type: ADD_MSG,
+      payload: res.data
+    });
+ 
+    dispatch(setAlert('تم ارسال الرسالة', 'success'));
+    window.location = '/';
+    
+
+  } catch (err) {
+    dispatch({
+      type: MSG_ERROR,
+       
+    });
+  }
+};
+
