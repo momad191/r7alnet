@@ -10,7 +10,7 @@ import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import Footer from './components/layout/Footer';
- 
+  
   
 import './App.css';
 import './Dash.css';
