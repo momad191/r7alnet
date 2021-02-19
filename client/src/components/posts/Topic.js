@@ -963,12 +963,12 @@ onChangeimage(e) {
     <meta name="keywords" content={this.state.Keywords} />
     <meta name="author" content={this.state.name}/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+ 
     <meta property="og:site_name" content='رحـــال '/>
     <meta property="og:title" content={this.state.title}/>
     <meta property="og:description" content={this.state.short}/>
     <meta property="og:image" content={this.state.image}/>
-    <meta property="og:url" content= {`http://localhost:3000/Topic/${this.state._id}#/${this.state.body}`}/>
+    <meta property="og:url" content= {`https://r7al.net/Topic/${this.state._id}#/${this.state.body}`}/>
 
     <meta name="twitter:title" content={this.state.title}/>
     <meta name="twitter:description" content={this.state.short}/>
