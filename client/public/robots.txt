@@ -1,0 +1,14 @@
+﻿User-agent: *
+Allow: /Topic
+Allow: /Topics
+
+
+
+User-agent: Twitterbot
+Allow: /imgres
+
+User-agent: facebookexternalhit
+Allow: /imgres
+
+
+
